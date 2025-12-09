@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    "out/**": true
+  },
+  "files.watcherExclude": {
+    "**/out/**": true
+  },
+  "search.exclude": {
+    "out/**": true
+  },
+  "typescript.tsserver.exclude": ["out"],
+  "javascript.validate.enable": false
+}
