@@ -17,6 +17,18 @@ type Publication = {
   description: Localized;
 };
 
+type OtherItem = {
+  id: string;
+  title: Localized;
+  tag?: Localized;
+  context?: Localized;
+  timeframe?: string;
+  date?: string;
+  amount?: string;
+  links?: { label: Localized; url: string }[];
+  description: Localized;
+};
+
 const profile = {
   name: { ja: "植田 雄士", en: "Yuji Ueda" },
   title: {
@@ -135,43 +147,39 @@ const publications: Publication[] = [
   },
 ];
 
-const others = {
-  grants: [
-    {
-      id: "grant-001",
-      title: {
-        ja: "学術情報処理のための責任あるAI基盤",
-        en: "Responsible AI Platform for Scholarly NLP",
-      },
-      funder: { ja: "日本学術振興会 科研費", en: "JSPS KAKENHI" },
-      role: { ja: "研究代表者", en: "Principal Investigator" },
-      startYear: 2022,
-      endYear: 2025,
-      amount: "500万円",
-      links: [{ label: { ja: "プロジェクトページ", en: "Project page" }, url: "https://example.com" }],
-      description: {
-        ja: "大規模モデルを活用した学術情報処理の研究基盤を整備し、公開データセットと評価手法を提供。",
-        en: "Building a research platform for scholarly NLP with large models, releasing datasets and evaluation protocols.",
-      },
+const others: OtherItem[] = [
+  {
+    id: "grant-001",
+    title: {
+      ja: "学術情報処理のための責任あるAI基盤",
+      en: "Responsible AI Platform for Scholarly NLP",
     },
-  ],
-  media: [
-    {
-      id: "media-001",
-      title: {
-        ja: "生成AIと学術研究の未来",
-        en: "Future of Generative AI in Academic Research",
-      },
-      outlet: { ja: "科学技術ジャーナル", en: "Science & Tech Journal" },
-      date: "2024-04-01",
-      links: [{ label: { ja: "記事を見る", en: "Read article" }, url: "https://example.com/interview" }],
-      description: {
-        ja: "研究現場での生成AI活用や、倫理的な運用についてコメント。",
-        en: "Comments on practical use of generative AI in research and the associated ethical considerations.",
-      },
+    tag: { ja: "Grant", en: "Grant" },
+    context: { ja: "日本学術振興会 科研費 / 研究代表者", en: "JSPS KAKENHI / Principal Investigator" },
+    timeframe: "2022–2025",
+    amount: "500万円",
+    links: [{ label: { ja: "プロジェクトページ", en: "Project page" }, url: "https://example.com" }],
+    description: {
+      ja: "大規模モデルを活用した学術情報処理の研究基盤を整備し、公開データセットと評価手法を提供。",
+      en: "Building a research platform for scholarly NLP with large models, releasing datasets and evaluation protocols.",
     },
-  ],
-};
+  },
+  {
+    id: "media-001",
+    title: {
+      ja: "生成AIと学術研究の未来",
+      en: "Future of Generative AI in Academic Research",
+    },
+    tag: { ja: "Media", en: "Media" },
+    context: { ja: "科学技術ジャーナル", en: "Science & Tech Journal" },
+    date: "2024-04-01",
+    links: [{ label: { ja: "記事を見る", en: "Read article" }, url: "https://example.com/interview" }],
+    description: {
+      ja: "研究現場での生成AI活用や、倫理的な運用についてコメント。",
+      en: "Comments on practical use of generative AI in research and the associated ethical considerations.",
+    },
+  },
+];
 
 const contact = {
   email: profile.email,
@@ -450,72 +458,42 @@ export default function Home() {
           <div className="container mx-auto px-6">
             <SectionTitle id="others-title">{sectionTitle("others")}</SectionTitle>
 
-            <div className="mb-12">
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                {lang === "ja" ? "Grants & Funding" : "Grants & Funding"}
-              </h3>
-              <ul className="space-y-6">
-                {others.grants.map((grant) => (
-                  <li key={grant.id} className="rounded-lg bg-white p-6">
-                    <h4 className="mb-2 text-xl font-semibold text-slate-900">
-                      {grant.title[lang]} ({grant.startYear}–{grant.endYear})
-                    </h4>
-                    <p className="mb-2 text-sm font-medium text-slate-600">
-                      {grant.funder[lang]} / {grant.role[lang]}
-                    </p>
-                    <p className="mb-2 text-sm font-semibold text-blue-700">{grant.amount}</p>
-                    <p className="mb-3 text-slate-700">{grant.description[lang]}</p>
-                    {grant.links && (
-                      <div className="flex flex-wrap gap-2">
-                        {grant.links.map((link) => (
-                          <a
-                            key={link.url}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm font-medium text-blue-600 hover:underline"
-                          >
-                            {link.label[lang]} ↗
-                          </a>
-                        ))}
-                      </div>
+            <ul className="space-y-6">
+              {others.map((item) => (
+                <li key={item.id} className="rounded-lg bg-white p-6">
+                  <div className="mb-1 flex flex-wrap items-center gap-3">
+                    {item.tag && (
+                      <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                        {item.tag[lang]}
+                      </span>
                     )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-4 text-2xl font-bold text-slate-800">
-                {lang === "ja" ? "Media / Interviews" : "Media / Interviews"}
-              </h3>
-              <ul className="space-y-6">
-                {others.media.map((media) => (
-                  <li key={media.id} className="rounded-lg bg-white p-6">
-                    <h4 className="mb-2 text-xl font-semibold text-slate-900">
-                      {media.title[lang]} ({media.date})
-                    </h4>
-                    <p className="mb-2 text-sm font-medium text-slate-600">{media.outlet[lang]}</p>
-                    <p className="mb-3 text-slate-700">{media.description[lang]}</p>
-                    {media.links && (
-                      <div className="flex flex-wrap gap-2">
-                        {media.links.map((link) => (
-                          <a
-                            key={link.url}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm font-medium text-blue-600 hover:underline"
-                          >
-                            {link.label[lang]} ↗
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    <h4 className="text-xl font-semibold text-slate-900">{item.title[lang]}</h4>
+                  </div>
+                  <div className="mb-2 flex flex-wrap gap-3 text-sm text-slate-600">
+                    {item.context && <span>{item.context[lang]}</span>}
+                    {item.timeframe && <span>{item.timeframe}</span>}
+                    {item.date && <span>{item.date}</span>}
+                    {item.amount && <span className="font-semibold text-blue-700">{item.amount}</span>}
+                  </div>
+                  <p className="mb-3 text-slate-700">{item.description[lang]}</p>
+                  {item.links && (
+                    <div className="flex flex-wrap gap-2">
+                      {item.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-medium text-blue-600 hover:underline"
+                        >
+                          {link.label[lang]} ↗
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
