@@ -265,13 +265,14 @@ export default function Home() {
   ];
 
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
+  const pageTitle =
+    lang === "ja"
+      ? `研究者ホームページ | ${profile.name[lang]}`
+      : `Research Portfolio | ${profile.name[lang]}`;
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <title>
-        {lang === "ja" ? "研究者ホームページ" : "Research Portfolio"} |{" "}
-        {profile.name[lang]}
-      </title>
+      <title>{pageTitle}</title>
 
       <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
         <nav className="container mx-auto flex items-center justify-between px-6 py-4">

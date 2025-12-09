@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
+    "dev:classic": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "npm run lint -- --fix"
   },
   "dependencies": {
     "next": "16.0.8",
@@ -20,6 +24,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.8",
+    "lint-staged": "^16.2.7",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
