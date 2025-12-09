@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // GitHub Pages で Next.js を動かすための公式静的エクスポート
+  output: "export",
+  basePath: "/my-page",
+  assetPrefix: "/my-page/",
 };
 
 export default nextConfig;
