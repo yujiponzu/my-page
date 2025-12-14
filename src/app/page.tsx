@@ -32,7 +32,7 @@ type OtherItem = {
 const profile = {
   name: { ja: "植田 雄士", en: "Yuji Ueda" },
   title: {
-    ja: "XX大学YY研究科 助教",
+    ja: "奈良先端科学技術大学院大学　ユビキタスコンピューティングシステム研究室",
     en: "Assistant Professor, YY Graduate School, XX University",
   },
   affiliation: {
@@ -51,9 +51,9 @@ const profile = {
   email: "example@uni.ac.jp",
   location: "Tokyo, Japan",
   social: {
-    twitter: "https://twitter.com/xxxx",
-    facebook: "https://www.facebook.com/xxxx",
-    github: "https://github.com/xxxx",
+    twitter: "https://twitter.com/yujipinzu0417",
+    facebook: "https://www.facebook.com/p/植田雄士-61577329245255/",
+    github: "https://github.com/yujiponzu",
   },
 };
 
@@ -213,6 +213,37 @@ function SectionTitle({ id, children }: { id: string; children: React.ReactNode 
   );
 }
 
+function SocialIcon({ name }: { name: "twitter" | "facebook" | "github" }) {
+  const commonProps = {
+    className: "h-6 w-6",
+    viewBox: "0 0 24 24",
+    fill: "currentColor",
+    "aria-hidden": true,
+  };
+
+  if (name === "github") {
+    return (
+      <svg {...commonProps}>
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.086 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.468-2.381 1.235-3.221-.123-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.137 3.004.404 2.291-1.552 3.297-1.23 3.297-1.23.654 1.653.242 2.874.12 3.176.77.84 1.233 1.911 1.233 3.221 0 4.609-2.807 5.624-5.48 5.921.43.371.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297 24 5.67 18.627.297 12 .297z" />
+      </svg>
+    );
+  }
+
+  if (name === "facebook") {
+    return (
+      <svg {...commonProps}>
+        <path d="M22.676 0H1.327C.593 0 0 .593 0 1.326v21.352C0 23.407.593 24 1.327 24h11.483v-9.294H9.847v-3.622h2.963V8.413c0-2.937 1.793-4.54 4.414-4.54 1.255 0 2.335.093 2.648.135v3.07h-1.82c-1.428 0-1.704.676-1.704 1.67v2.188h3.406l-.444 3.623h-2.962V24h5.805C23.407 24 24 23.407 24 22.674V1.326C24 .593 23.407 0 22.676 0z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...commonProps}>
+      <path d="M3 3h2.79l5.15 6.91L16.8 3H21l-6.53 8.78L21.5 21h-3.3l-5.4-7.24L7.66 21H3l6.71-9.02L3 3Z" />
+    </svg>
+  );
+}
+
 function PeerReviewBadge({ lang }: { lang: Lang }) {
   return (
     <span className="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-blue-800">
@@ -270,6 +301,12 @@ export default function Home() {
     { id: "publications", label: sectionLabels.publications[lang] },
     { id: "others", label: sectionLabels.others[lang] },
     { id: "contact", label: sectionLabels.contact[lang] },
+  ];
+
+  const socialLinks = [
+    { name: "github" as const, label: "GitHub", url: profile.social.github },
+    { name: "facebook" as const, label: "Facebook", url: profile.social.facebook },
+    { name: "twitter" as const, label: "X", url: profile.social.twitter },
   ];
 
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
@@ -366,33 +403,19 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="flex gap-4 pt-4">
-                  <a
-                    href={profile.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-600 transition hover:text-blue-600"
-                    aria-label="Twitter"
-                  >
-                    X
-                  </a>
-                  <a
-                    href={profile.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-600 transition hover:text-blue-600"
-                    aria-label="Facebook"
-                  >
-                    Fb
-                  </a>
-                  <a
-                    href={profile.social.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-600 transition hover:text-blue-600"
-                    aria-label="GitHub"
-                  >
-                    Gh
-                  </a>
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-600 transition hover:text-blue-600"
+                      aria-label={social.label}
+                    >
+                      <SocialIcon name={social.name} />
+                      <span className="sr-only">{social.label}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -542,30 +565,19 @@ export default function Home() {
             © {new Date().getFullYear()} {profile.name[lang]}
           </p>
           <div className="flex justify-center gap-6">
-            <a
-              href={profile.social.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-blue-600"
-            >
-              Twitter
-            </a>
-            <a
-              href={profile.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-blue-600"
-            >
-              Facebook
-            </a>
-            <a
-              href={profile.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-blue-600"
-            >
-              GitHub
-            </a>
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-blue-600"
+                aria-label={social.label}
+              >
+                <SocialIcon name={social.name} />
+                <span className="sr-only">{social.label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </footer>
