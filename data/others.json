@@ -1,0 +1,33 @@
+[
+  {
+    "id": "grant-001",
+    "title": {
+      "ja": "学術情報処理のための責任あるAI基盤",
+      "en": "Responsible AI Platform for Scholarly NLP"
+    },
+    "tag": { "ja": "Grant", "en": "Grant" },
+    "context": { "ja": "日本学術振興会 科研費 / 研究代表者", "en": "JSPS KAKENHI / Principal Investigator" },
+    "timeframe": "2022–2025",
+    "amount": "500万円",
+    "links": [{ "label": { "ja": "プロジェクトページ", "en": "Project page" }, "url": "https://example.com" }],
+    "description": {
+      "ja": "大規模モデルを活用した学術情報処理の研究基盤を整備し、公開データセットと評価手法を提供。",
+      "en": "Building a research platform for scholarly NLP with large models, releasing datasets and evaluation protocols."
+    }
+  },
+  {
+    "id": "media-001",
+    "title": {
+      "ja": "生成AIと学術研究の未来",
+      "en": "Future of Generative AI in Academic Research"
+    },
+    "tag": { "ja": "Media", "en": "Media" },
+    "context": { "ja": "科学技術ジャーナル", "en": "Science & Tech Journal" },
+    "date": "2024-04-01",
+    "links": [{ "label": { "ja": "記事を見る", "en": "Read article" }, "url": "https://example.com/interview" }],
+    "description": {
+      "ja": "研究現場での生成AI活用や、倫理的な運用についてコメント。",
+      "en": "Comments on practical use of generative AI in research and the associated ethical considerations."
+    }
+  }
+]

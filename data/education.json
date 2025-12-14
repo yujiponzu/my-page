@@ -1,0 +1,29 @@
+[
+  {
+    "id": "phd",
+    "startYear": 2021,
+    "endYear": 2024,
+    "degree": { "ja": "博士(情報科学)", "en": "Ph.D. in Information Science" },
+    "institution": {
+      "ja": "XX大学 YY研究科",
+      "en": "YY Graduate School, XX University"
+    },
+    "department": { "ja": "ZZ専攻", "en": "Department of ZZ" },
+    "note": { "ja": "指導教員: AAA 教授", "en": "Supervisor: Prof. AAA" }
+  },
+  {
+    "id": "ms",
+    "startYear": 2019,
+    "endYear": 2021,
+    "degree": { "ja": "修士(情報科学)", "en": "M.S. in Information Science" },
+    "institution": {
+      "ja": "XX大学 YY研究科",
+      "en": "YY Graduate School, XX University"
+    },
+    "department": { "ja": "ZZ専攻", "en": "Department of ZZ" },
+    "note": {
+      "ja": "研究テーマ: 言語モデルの評価",
+      "en": "Topic: Evaluation of language models"
+    }
+  }
+]

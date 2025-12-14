@@ -1,0 +1,59 @@
+[
+  {
+    "id": "paper-001",
+    "category": "journal",
+    "title": {
+      "ja": "大規模言語モデルの評価指標設計",
+      "en": "Designing Evaluation Metrics for Large Language Models"
+    },
+    "authors": "Yuji Ueda, First Author, Colleagues",
+    "venue": {
+      "ja": "情報処理学会論文誌",
+      "en": "Journal of Information Processing Society of Japan"
+    },
+    "year": 2024,
+    "peerReviewed": true,
+    "links": [
+      { "label": { "ja": "出版社サイト", "en": "Publisher" }, "url": "https://example.com" },
+      { "label": { "ja": "DOI", "en": "DOI" }, "url": "https://doi.org/xxxx" }
+    ],
+    "description": {
+      "ja": "言語モデルの自動評価指標を体系化し、信頼できる実験プロトコルを提案。複数のベンチマークで再現性と妥当性を検証。",
+      "en": "Systematizes automatic metrics for language models and proposes reliable experimental protocols, validated across multiple benchmarks."
+    }
+  },
+  {
+    "id": "paper-002",
+    "category": "international_conference",
+    "title": {
+      "ja": "学術論文検索のための多言語表現学習",
+      "en": "Multilingual Representation Learning for Scholarly Paper Search"
+    },
+    "authors": "First Author, Yuji Ueda, Team",
+    "venue": { "ja": "ACL", "en": "ACL" },
+    "year": 2023,
+    "peerReviewed": true,
+    "links": [{ "label": { "ja": "arXiv", "en": "arXiv" }, "url": "https://arxiv.org/xxxx" }],
+    "description": {
+      "ja": "多言語の学術コーパスで訓練したエンコーダを用い、クロスリンガルな論文検索性能を向上。",
+      "en": "Improves cross-lingual paper retrieval with encoders trained on multilingual scholarly corpora."
+    }
+  },
+  {
+    "id": "paper-003",
+    "category": "domestic_conference",
+    "title": {
+      "ja": "研究者向けインタラクティブ要約の検討",
+      "en": "Interactive Summarization for Academic Workflows"
+    },
+    "authors": "Yuji Ueda, Collaborators",
+    "venue": { "ja": "言語処理学会", "en": "NLP Japan" },
+    "year": 2022,
+    "peerReviewed": false,
+    "links": [{ "label": { "ja": "スライド", "en": "Slides" }, "url": "https://example.com/slides" }],
+    "description": {
+      "ja": "研究者が実務で使える要約システムのプロトタイプを設計し、ユーザ調査を実施。",
+      "en": "Designs a prototype summarization tool for researchers and reports findings from user studies."
+    }
+  }
+]
