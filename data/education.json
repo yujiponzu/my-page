@@ -17,7 +17,6 @@
   {
     "id": "ms",
     "startYear": 2025,
-    "endYear": 2021,
     "degree": { "ja": "修士(情報科学)", "en": "M.S. in Information Science" },
     "institution": {
       "ja": "奈良先端科学技術大学院大学 先端科学技術研究科",

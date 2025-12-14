@@ -1,24 +1,24 @@
 {
   "name": { "ja": "植田 雄士", "en": "Yuji Ueda" },
   "title": {
-    "ja": "奈良先端科学技術大学院大学　ユビキタスコンピューティングシステム研究室",
-    "en": "Assistant Professor, YY Graduate School, XX University"
+    "ja": "奈良先端科学技術大学院大学　ユビキタスコンピューティングシステム研究室 修士",
+    "en": "Master’s Student, Ubiquitous Computing Systems Laboratory, Nara Institute of Science and Technology"
   },
   "affiliation": {
-    "ja": "ZZ専攻 / 情報科学分野",
-    "en": "Department of ZZ, Information Science"
+    "ja": "情報科学領域",
+    "en": "Division of Information Science"
   },
   "researchAreas": {
-    "ja": ["機械学習", "自然言語処理", "情報検索"],
-    "en": ["Machine Learning", "Natural Language Processing", "Information Retrieval"]
+    "ja": ["大規模言語モデル", "情報的健康"],
+    "en": ["Large Language Models", "Digital Well-Being"]
   },
-  "keywords": ["Representation Learning", "Multimodal", "Evaluation", "Academic NLP"],
+  "keywords": ["Large Language Model", "Echo Chamber", "Filter Bubble"],
   "bio": {
-    "ja": "機械学習と言語モデルを軸に、学術情報処理や評価指標の設計に取り組んでいます。大規模モデルと人間の協働をどのようにデザインするか、社会的インパクトに配慮した研究を進めています。",
-    "en": "I study machine learning and language models, focusing on scholarly NLP, evaluation design, and human–AI collaboration. My work explores how large models can be deployed responsibly with attention to social impact."
+    "ja": "フィルターバブルやエコーチェンバーといった閉鎖的な情報空間からの脱出による情報的健康への行動変容について研究しております．またその一環としてLLMの政治バイアスについても研究しています．",
+    "en": "I study behavioral changes that promote digital well-being by enabling individuals to escape closed information environments such as filter bubbles and echo chambers. As part of this research, I also investigate political biases in large language models (LLMs)."
   },
-  "email": "example@uni.ac.jp",
-  "location": "Tokyo, Japan",
+  "email": "ueda.yuji.vb4[at]naist.ac.jp",
+  "location": "Nara, Japan",
   "social": {
     "twitter": "https://twitter.com/yujipinzu0417",
     "facebook": "https://www.facebook.com/p/植田雄士-61577329245255/",
