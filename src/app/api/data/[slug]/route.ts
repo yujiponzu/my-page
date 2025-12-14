@@ -1,7 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-const allowedFiles = new Set(["profile", "education", "publications", "others", "contact"]);
+const allowedFiles = new Set([
+  "profile",
+  "education",
+  "publications",
+  "others",
+  "contact",
+]);
 
 export async function GET(
   _request: Request,
