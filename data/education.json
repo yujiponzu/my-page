@@ -1,29 +1,32 @@
 [
   {
-    "id": "phd",
-    "startYear": 2021,
-    "endYear": 2024,
-    "degree": { "ja": "博士(情報科学)", "en": "Ph.D. in Information Science" },
+    "id": "bs",
+    "startYear": 2019,
+    "endYear": 2025,
+    "degree": { "ja": "学士(文学)", "en": "B.S. in Literature" },
     "institution": {
-      "ja": "XX大学 YY研究科",
-      "en": "YY Graduate School, XX University"
+      "ja": "大阪大学",
+      "en": "Osaka University"
     },
-    "department": { "ja": "ZZ専攻", "en": "Department of ZZ" },
-    "note": { "ja": "指導教員: AAA 教授", "en": "Supervisor: Prof. AAA" }
+    "department": { "ja": "文学部", "en": "Faculty of Literature" },
+    "note": {
+      "ja": "研究テーマ: 『エコーチェンバー』という語句の多義性と曖昧性についての評価",
+      "en": "Topic: Evaluation of the Polysemy and Ambiguity of the Term “Echo Chamber”"
+    }
   },
   {
     "id": "ms",
-    "startYear": 2019,
+    "startYear": 2025,
     "endYear": 2021,
     "degree": { "ja": "修士(情報科学)", "en": "M.S. in Information Science" },
     "institution": {
-      "ja": "XX大学 YY研究科",
-      "en": "YY Graduate School, XX University"
+      "ja": "奈良先端科学技術大学院大学 先端科学技術研究科",
+      "en": "Nara Institute of Science and Technology"
     },
-    "department": { "ja": "ZZ専攻", "en": "Department of ZZ" },
+    "department": { "ja": "情報科学領域", "en": "Division of Information Science" },
     "note": {
-      "ja": "研究テーマ: 言語モデルの評価",
-      "en": "Topic: Evaluation of language models"
+      "ja": "研究テーマ: LLMに内在する政治バイアスの評価",
+      "en": "Topic: Evaluation of LLMs' inherent political bias"
     }
   }
 ]
