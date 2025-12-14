@@ -5,9 +5,9 @@ const allowedFiles = new Set(["profile", "education", "publications", "others", 
 
 export async function GET(
   _request: Request,
-  { params }: { params: { slug: string } },
+  { params }: { params: Promise<{ slug: string }> },
 ) {
-  const { slug } = params;
+  const { slug } = await params;
 
   if (!allowedFiles.has(slug)) {
     return new Response("Not found", { status: 404 });
