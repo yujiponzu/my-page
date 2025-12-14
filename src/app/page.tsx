@@ -184,14 +184,15 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (typeof fetch === "undefined") {
+    const fetchFn = typeof globalThis.fetch === "function" ? globalThis.fetch : null;
+    if (!fetchFn) {
       return;
     }
 
     let isCancelled = false;
 
     const fetchJson = async <T,>(url: string): Promise<T> => {
-      const res = await fetch(url);
+      const res = await fetchFn(url);
       if (!res.ok) {
         throw new Error(`Failed to fetch ${url}`);
       }
