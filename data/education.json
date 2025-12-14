@@ -1,0 +1,31 @@
+[
+  {
+    "id": "bs",
+    "startYear": 2019,
+    "endYear": 2025,
+    "degree": { "ja": "学士(文学)", "en": "B.S. in Literature" },
+    "institution": {
+      "ja": "大阪大学",
+      "en": "Osaka University"
+    },
+    "department": { "ja": "文学部", "en": "Faculty of Literature" },
+    "note": {
+      "ja": "研究テーマ: 『エコーチェンバー』という語句の多義性と曖昧性についての評価",
+      "en": "Topic: Evaluation of the Polysemy and Ambiguity of the Term “Echo Chamber”"
+    }
+  },
+  {
+    "id": "ms",
+    "startYear": 2025,
+    "degree": { "ja": "修士(情報科学)", "en": "M.S. in Information Science" },
+    "institution": {
+      "ja": "奈良先端科学技術大学院大学 先端科学技術研究科",
+      "en": "Nara Institute of Science and Technology"
+    },
+    "department": { "ja": "情報科学領域", "en": "Division of Information Science" },
+    "note": {
+      "ja": "研究テーマ: LLMに内在する政治バイアスの評価",
+      "en": "Topic: Evaluation of LLMs' inherent political bias"
+    }
+  }
+]

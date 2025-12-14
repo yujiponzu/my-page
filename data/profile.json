@@ -1,0 +1,27 @@
+{
+  "name": { "ja": "植田 雄士", "en": "Yuji Ueda" },
+  "title": {
+    "ja": "奈良先端科学技術大学院大学　ユビキタスコンピューティングシステム研究室 修士",
+    "en": "Master’s Student, Ubiquitous Computing Systems Laboratory, Nara Institute of Science and Technology"
+  },
+  "affiliation": {
+    "ja": "情報科学領域",
+    "en": "Division of Information Science"
+  },
+  "researchAreas": {
+    "ja": ["大規模言語モデル", "情報的健康"],
+    "en": ["Large Language Models", "Digital Well-Being"]
+  },
+  "keywords": ["Large Language Model", "Echo Chamber", "Filter Bubble"],
+  "bio": {
+    "ja": "フィルターバブルやエコーチェンバーといった閉鎖的な情報空間からの脱出による情報的健康への行動変容について研究しております．またその一環としてLLMの政治バイアスについても研究しています．",
+    "en": "I study behavioral changes that promote digital well-being by enabling individuals to escape closed information environments such as filter bubbles and echo chambers. As part of this research, I also investigate political biases in large language models (LLMs)."
+  },
+  "email": "ueda.yuji.vb4[at]naist.ac.jp",
+  "location": "Nara, Japan",
+  "social": {
+    "twitter": "https://twitter.com/yujipinzu0417",
+    "facebook": "https://www.facebook.com/p/植田雄士-61577329245255/",
+    "github": "https://github.com/yujiponzu"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "grant-001",
+    "title": {
+      "ja": "LLMによるプライバシーポリシーの理解促進と意思決定の支援",
+      "en": "Enhancing Understanding of Privacy Policies and Supporting Decision-Making through LLMs"
+    },
+    "tag": { "ja": "Grant", "en": "Grant" },
+    "context": { "ja": "関西テック・クリエイター・チャレンジ", "en": "KANSAI Tech Creator Challenge" },
+    "timeframe": "2025",
+    "links": [{ "label": { "ja": "詳細", "en": "More Details" }, "url": "https://kansai-tcc.dle.or.jp/2025/ai-iot-ca/" }],
+    "description": {
+      "ja": "LLMによるプライバシーポリシーの要約とスコアリングを掲載したアプリ検索プラットフォームの開発",
+      "en": "Development of an App Discovery Platform Featuring LLM-Based Privacy Policy Summarization and Scoring"
+    }
+  }
+]

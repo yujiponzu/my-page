@@ -1,6 +1,12 @@
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Home from "./page";
+import publicationsData from "../../data/publications.json";
+
+type Publication = {
+  title: { ja: string; en: string };
+  peerReviewed: boolean;
+};
 
 describe("Home page", () => {
   it("shows Japanese content by default", () => {
@@ -25,16 +31,24 @@ describe("Home page", () => {
   });
 
   it("shows peer review badge only for peer-reviewed publications", () => {
+    const publications = publicationsData as Publication[];
+    const reviewed = publications.find((p) => p.peerReviewed);
+    const nonReviewed = publications.find((p) => !p.peerReviewed);
+
+    if (!reviewed || !nonReviewed) {
+      throw new Error("Publication data missing peer-reviewed or non peer-reviewed entry");
+    }
+
     render(<Home />);
 
-    const reviewedHeading = screen.getByText("大規模言語モデルの評価指標設計");
+    const reviewedHeading = screen.getByText(reviewed.title.ja);
     const reviewedItem = reviewedHeading.closest("li");
     if (!reviewedItem) {
       throw new Error("Peer-reviewed publication element not found");
     }
     expect(within(reviewedItem).getByText("査読有")).toBeInTheDocument();
 
-    const nonReviewedHeading = screen.getByText("研究者向けインタラクティブ要約の検討");
+    const nonReviewedHeading = screen.getByText(nonReviewed.title.ja);
     const nonReviewedItem = nonReviewedHeading.closest("li");
     if (!nonReviewedItem) {
       throw new Error("Non peer-reviewed publication element not found");

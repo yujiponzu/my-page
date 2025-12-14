@@ -1,9 +1,30 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import contactJson from "../../data/contact.json";
+import educationJson from "../../data/education.json";
+import othersJson from "../../data/others.json";
+import profileJson from "../../data/profile.json";
+import publicationsJson from "../../data/publications.json";
 
 type Lang = "ja" | "en";
 type Localized = { ja: string; en: string };
+
+type Profile = {
+  name: Localized;
+  title: Localized;
+  affiliation: Localized;
+  researchAreas: { ja: string[]; en: string[] };
+  keywords: string[];
+  bio: Localized;
+  email: string;
+  location: string;
+  social: {
+    twitter: string;
+    facebook: string;
+    github: string;
+  };
+};
 
 type Publication = {
   id: string;
@@ -15,6 +36,16 @@ type Publication = {
   peerReviewed: boolean;
   links?: { label: Localized; url: string }[];
   description: Localized;
+};
+
+type EducationItem = {
+  id: string;
+  startYear: number;
+  endYear: number;
+  degree: Localized;
+  institution: Localized;
+  department: Localized;
+  note: Localized;
 };
 
 type OtherItem = {
@@ -29,164 +60,29 @@ type OtherItem = {
   description: Localized;
 };
 
-const profile = {
-  name: { ja: "植田 雄士", en: "Yuji Ueda" },
-  title: {
-    ja: "奈良先端科学技術大学院大学　ユビキタスコンピューティングシステム研究室",
-    en: "Assistant Professor, YY Graduate School, XX University",
-  },
-  affiliation: {
-    ja: "ZZ専攻 / 情報科学分野",
-    en: "Department of ZZ, Information Science",
-  },
-  researchAreas: {
-    ja: ["機械学習", "自然言語処理", "情報検索"],
-    en: ["Machine Learning", "Natural Language Processing", "Information Retrieval"],
-  },
-  keywords: ["Representation Learning", "Multimodal", "Evaluation", "Academic NLP"],
-  bio: {
-    ja: "機械学習と言語モデルを軸に、学術情報処理や評価指標の設計に取り組んでいます。大規模モデルと人間の協働をどのようにデザインするか、社会的インパクトに配慮した研究を進めています。",
-    en: "I study machine learning and language models, focusing on scholarly NLP, evaluation design, and human–AI collaboration. My work explores how large models can be deployed responsibly with attention to social impact.",
-  },
-  email: "example@uni.ac.jp",
-  location: "Tokyo, Japan",
-  social: {
-    twitter: "https://twitter.com/yujipinzu0417",
-    facebook: "https://www.facebook.com/p/植田雄士-61577329245255/",
-    github: "https://github.com/yujiponzu",
-  },
+type Contact = {
+  email: string;
+  addressJa: string;
+  addressEn: string;
+  labUrl: string;
 };
 
-const education = [
-  {
-    id: "phd",
-    startYear: 2021,
-    endYear: 2024,
-    degree: { ja: "博士(情報科学)", en: "Ph.D. in Information Science" },
-    institution: {
-      ja: "XX大学 YY研究科",
-      en: "YY Graduate School, XX University",
-    },
-    department: { ja: "ZZ専攻", en: "Department of ZZ" },
-    note: { ja: "指導教員: AAA 教授", en: "Supervisor: Prof. AAA" },
-  },
-  {
-    id: "ms",
-    startYear: 2019,
-    endYear: 2021,
-    degree: { ja: "修士(情報科学)", en: "M.S. in Information Science" },
-    institution: {
-      ja: "XX大学 YY研究科",
-      en: "YY Graduate School, XX University",
-    },
-    department: { ja: "ZZ専攻", en: "Department of ZZ" },
-    note: {
-      ja: "研究テーマ: 言語モデルの評価",
-      en: "Topic: Evaluation of language models",
-    },
-  },
-];
-
-const publications: Publication[] = [
-  {
-    id: "paper-001",
-    category: "journal",
-    title: {
-      ja: "大規模言語モデルの評価指標設計",
-      en: "Designing Evaluation Metrics for Large Language Models",
-    },
-    authors: "Yuji Ueda, First Author, Colleagues",
-    venue: {
-      ja: "情報処理学会論文誌",
-      en: "Journal of Information Processing Society of Japan",
-    },
-    year: 2024,
-    peerReviewed: true,
-    links: [
-      { label: { ja: "出版社サイト", en: "Publisher" }, url: "https://example.com" },
-      { label: { ja: "DOI", en: "DOI" }, url: "https://doi.org/xxxx" },
-    ],
-    description: {
-      ja: "言語モデルの自動評価指標を体系化し、信頼できる実験プロトコルを提案。複数のベンチマークで再現性と妥当性を検証。",
-      en: "Systematizes automatic metrics for language models and proposes reliable experimental protocols, validated across multiple benchmarks.",
-    },
-  },
-  {
-    id: "paper-002",
-    category: "international_conference",
-    title: {
-      ja: "学術論文検索のための多言語表現学習",
-      en: "Multilingual Representation Learning for Scholarly Paper Search",
-    },
-    authors: "First Author, Yuji Ueda, Team",
-    venue: { ja: "ACL", en: "ACL" },
-    year: 2023,
-    peerReviewed: true,
-    links: [{ label: { ja: "arXiv", en: "arXiv" }, url: "https://arxiv.org/xxxx" }],
-    description: {
-      ja: "多言語の学術コーパスで訓練したエンコーダを用い、クロスリンガルな論文検索性能を向上。",
-      en: "Improves cross-lingual paper retrieval with encoders trained on multilingual scholarly corpora.",
-    },
-  },
-  {
-    id: "paper-003",
-    category: "domestic_conference",
-    title: {
-      ja: "研究者向けインタラクティブ要約の検討",
-      en: "Interactive Summarization for Academic Workflows",
-    },
-    authors: "Yuji Ueda, Collaborators",
-    venue: { ja: "言語処理学会", en: "NLP Japan" },
-    year: 2022,
-    peerReviewed: false,
-    links: [{ label: { ja: "スライド", en: "Slides" }, url: "https://example.com/slides" }],
-    description: {
-      ja: "研究者が実務で使える要約システムのプロトタイプを設計し、ユーザ調査を実施。",
-      en: "Designs a prototype summarization tool for researchers and reports findings from user studies.",
-    },
-  },
-];
-
-const others: OtherItem[] = [
-  {
-    id: "grant-001",
-    title: {
-      ja: "学術情報処理のための責任あるAI基盤",
-      en: "Responsible AI Platform for Scholarly NLP",
-    },
-    tag: { ja: "Grant", en: "Grant" },
-    context: { ja: "日本学術振興会 科研費 / 研究代表者", en: "JSPS KAKENHI / Principal Investigator" },
-    timeframe: "2022–2025",
-    amount: "500万円",
-    links: [{ label: { ja: "プロジェクトページ", en: "Project page" }, url: "https://example.com" }],
-    description: {
-      ja: "大規模モデルを活用した学術情報処理の研究基盤を整備し、公開データセットと評価手法を提供。",
-      en: "Building a research platform for scholarly NLP with large models, releasing datasets and evaluation protocols.",
-    },
-  },
-  {
-    id: "media-001",
-    title: {
-      ja: "生成AIと学術研究の未来",
-      en: "Future of Generative AI in Academic Research",
-    },
-    tag: { ja: "Media", en: "Media" },
-    context: { ja: "科学技術ジャーナル", en: "Science & Tech Journal" },
-    date: "2024-04-01",
-    links: [{ label: { ja: "記事を見る", en: "Read article" }, url: "https://example.com/interview" }],
-    description: {
-      ja: "研究現場での生成AI活用や、倫理的な運用についてコメント。",
-      en: "Comments on practical use of generative AI in research and the associated ethical considerations.",
-    },
-  },
-];
-
-const contact = {
-  email: profile.email,
-  addressJa: "〒000-0000 東京都XX区1-2-3 XX大学YY研究科",
-  addressEn: "YY Graduate School, XX University, 1-2-3 Tokyo",
-  labUrl: "https://example.com/lab",
+type DataState = {
+  profile: Profile;
+  education: EducationItem[];
+  publications: Publication[];
+  others: OtherItem[];
+  contact: Contact;
 };
+
+const initialData: DataState = {
+  profile: profileJson as Profile,
+  education: educationJson as EducationItem[],
+  publications: publicationsJson as Publication[],
+  others: othersJson as OtherItem[],
+  contact: contactJson as Contact,
+};
+
 
 const categoryLabels: Record<Publication["category"], Localized> = {
   journal: { ja: "Journals", en: "Journals" },
@@ -284,16 +180,61 @@ function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("ja");
+  const [data, setData] = useState<DataState | null>(initialData);
+  const [error, setError] = useState<string | null>(null);
 
-  const publicationsByCategory = useMemo(() => {
-    return publications.reduce<Record<Publication["category"], Publication[]>>(
+  useEffect(() => {
+    const fetchFn = typeof globalThis.fetch === "function" ? globalThis.fetch : null;
+    if (!fetchFn) {
+      return;
+    }
+
+    let isCancelled = false;
+
+    const fetchJson = async <T,>(url: string): Promise<T> => {
+      const res = await fetchFn(url);
+      if (!res.ok) {
+        throw new Error(`Failed to fetch ${url}`);
+      }
+      return res.json();
+    };
+
+    const loadData = async () => {
+      try {
+        const [profile, education, publications, others, contact] = await Promise.all([
+          fetchJson<Profile>("/api/data/profile"),
+          fetchJson<EducationItem[]>("/api/data/education"),
+          fetchJson<Publication[]>("/api/data/publications"),
+          fetchJson<OtherItem[]>("/api/data/others"),
+          fetchJson<Contact>("/api/data/contact"),
+        ]);
+        if (isCancelled) return;
+        setData({ profile, education, publications, others, contact });
+      } catch (err) {
+        console.error(err);
+        setError("データの取得に失敗しました。");
+      }
+    };
+
+    loadData();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
+  const publicationsByCategory = useMemo<Record<Publication["category"], Publication[]>>(() => {
+    if (!data) {
+      return { journal: [], international_conference: [], domestic_conference: [] };
+    }
+    return data.publications.reduce<Record<Publication["category"], Publication[]>>(
       (acc, item) => {
         acc[item.category] = [...(acc[item.category] ?? []), item];
         return acc;
       },
       { journal: [], international_conference: [], domestic_conference: [] },
     );
-  }, []);
+  }, [data]);
 
   const navItems = [
     { id: "about", label: sectionLabels.about[lang] },
@@ -303,17 +244,31 @@ export default function Home() {
     { id: "contact", label: sectionLabels.contact[lang] },
   ];
 
+  const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
+  const pageTitle = data
+    ? lang === "ja"
+      ? `研究者ホームページ | ${data.profile.name[lang]}`
+      : `Research Portfolio | ${data.profile.name[lang]}`
+    : "Research Portfolio";
+
+  if (!data) {
+    return (
+      <div className="min-h-screen bg-white text-slate-900">
+        <title>{pageTitle}</title>
+        <div className="flex h-screen items-center justify-center px-6 text-slate-600">
+          {error ?? "Loading..."}
+        </div>
+      </div>
+    );
+  }
+
+  const { profile, education, others, contact } = data;
+
   const socialLinks = [
     { name: "github" as const, label: "GitHub", url: profile.social.github },
     { name: "facebook" as const, label: "Facebook", url: profile.social.facebook },
     { name: "twitter" as const, label: "X", url: profile.social.twitter },
   ];
-
-  const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
-  const pageTitle =
-    lang === "ja"
-      ? `研究者ホームページ | ${profile.name[lang]}`
-      : `Research Portfolio | ${profile.name[lang]}`;
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
