@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import contactJson from "../../data/contact.json";
+import educationJson from "../../data/education.json";
+import othersJson from "../../data/others.json";
+import profileJson from "../../data/profile.json";
+import publicationsJson from "../../data/publications.json";
 
 type Lang = "ja" | "en";
 type Localized = { ja: string; en: string };
@@ -68,6 +73,14 @@ type DataState = {
   publications: Publication[];
   others: OtherItem[];
   contact: Contact;
+};
+
+const initialData: DataState = {
+  profile: profileJson as Profile,
+  education: educationJson as EducationItem[],
+  publications: publicationsJson as Publication[],
+  others: othersJson as OtherItem[],
+  contact: contactJson as Contact,
 };
 
 
@@ -167,10 +180,16 @@ function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("ja");
-  const [data, setData] = useState<DataState | null>(null);
+  const [data, setData] = useState<DataState | null>(initialData);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (typeof fetch === "undefined") {
+      return;
+    }
+
+    let isCancelled = false;
+
     const fetchJson = async <T,>(url: string): Promise<T> => {
       const res = await fetch(url);
       if (!res.ok) {
@@ -188,6 +207,7 @@ export default function Home() {
           fetchJson<OtherItem[]>("/api/data/others"),
           fetchJson<Contact>("/api/data/contact"),
         ]);
+        if (isCancelled) return;
         setData({ profile, education, publications, others, contact });
       } catch (err) {
         console.error(err);
@@ -196,6 +216,10 @@ export default function Home() {
     };
 
     loadData();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   const publicationsByCategory = useMemo<Record<Publication["category"], Publication[]>>(() => {
