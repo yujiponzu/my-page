@@ -304,7 +304,7 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="relative overflow-hidden bg-white pb-12 pt-8 sm:py-16 lg:pb-12 lg:pt-6">
+        <section className="relative overflow-hidden bg-white pb-2 pt-2 sm:pb-10 sm:pt-10 lg:pb-6 lg:pt-6">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid items-center gap-8 sm:gap-10 lg:gap-8 lg:grid-cols-2">
               <div>
@@ -388,7 +388,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="bg-white py-12 sm:py-16">
+        <section id="about" className="bg-white pb-6 pt-2 sm:pb-8 sm:pt-8 lg:pb-8 lg:pt-6">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="about-title">{sectionTitle("about")}</SectionTitle>
             <div className="space-y-4 text-base leading-relaxed text-slate-700 sm:text-lg">
@@ -399,13 +399,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="education" className="bg-white py-12 sm:py-16">
+        <section id="education" className="bg-white py-6 sm:py-8 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="education-title">{sectionTitle("education")}</SectionTitle>
-            <ul className="space-y-6">
+            <ul className="space-y-2 sm:space-y-3">
               {education.map((item) => (
-                <li key={item.id} className="rounded-lg bg-white p-4 sm:p-6">
-                  <div className="mb-2 text-sm font-semibold text-slate-500">
+                <li key={item.id} className="rounded-lg bg-white p-2 sm:p-3">
+                  <div className="mb-1 text-sm font-semibold text-slate-500">
                     {item.startYear} — {item.endYear}
                   </div>
                   <h3 className="mb-1 text-lg font-bold text-slate-900 sm:text-xl">
@@ -414,7 +414,7 @@ export default function Home() {
                   <p className="mb-1 text-base text-slate-700 sm:text-lg">
                     {item.institution[lang]}
                   </p>
-                  <p className="mb-2 text-slate-600">{item.department[lang]}</p>
+                  <p className="mb-1 text-slate-600">{item.department[lang]}</p>
                   <p className="text-sm italic text-slate-500">{item.note[lang]}</p>
                 </li>
               ))}
@@ -422,7 +422,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="publications" className="bg-white py-12 sm:py-16">
+        <section id="publications" className="bg-white py-6 sm:py-8 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="publications-title">{sectionTitle("publications")}</SectionTitle>
             <div className="space-y-12">
@@ -447,7 +447,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="others" className="bg-white py-12 sm:py-16">
+        <section id="others" className="bg-white py-6 sm:py-8 lg:py-8">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="others-title">{sectionTitle("others")}</SectionTitle>
 
