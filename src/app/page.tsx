@@ -62,7 +62,6 @@ type OtherItem = {
 
 const yujiBoku = Yuji_Boku({
   weight: "400",
-  subsets: ["latin", "japanese"],
   display: "swap",
 });
 
