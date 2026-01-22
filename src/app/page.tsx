@@ -103,7 +103,7 @@ const sectionLabels: Record<string, Localized> = {
 
 function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <h2 id={id} className="mb-8 text-3xl font-bold text-slate-900">
+    <h2 id={id} className="mb-6 text-2xl font-bold text-slate-900 sm:mb-8 sm:text-3xl">
       {children}
     </h2>
   );
@@ -274,28 +274,28 @@ export default function Home() {
     <div className="min-h-screen bg-white text-slate-900">
       <title>{pageTitle}</title>
 
-      <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
-        <nav className="container mx-auto flex items-center justify-between px-6 py-4">
-          <a href="#" className="text-xl font-bold text-slate-900">
+      <header className="border-b border-slate-200 bg-white">
+        <nav className="container mx-auto relative flex flex-col gap-3 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
+          <a href="#" className="text-lg font-bold text-slate-900 sm:text-xl">
             {profile.name[lang]}
           </a>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className="text-sm font-medium text-slate-600 transition hover:text-blue-600"
+                className="font-medium text-slate-600 transition hover:text-blue-600"
               >
                 {item.label}
               </a>
             ))}
           </div>
-          <div className="flex items-center gap-2">
+          <div className="absolute right-4 top-4 flex items-center gap-2 text-sm sm:static sm:self-end sm:text-base lg:self-auto">
             {(["ja", "en"] as Lang[]).map((value) => (
               <button
                 key={value}
                 onClick={() => setLang(value)}
-                className={`rounded-full px-3 py-1 ${lang === value ? "text-blue-700 font-semibold" : "text-slate-600"}`}
+                className={`rounded-full px-3 py-1 text-sm sm:text-base ${lang === value ? "font-semibold text-blue-700" : "text-slate-600"}`}
                 aria-pressed={lang === value}
               >
                 {value.toUpperCase()}
@@ -306,19 +306,25 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="relative overflow-hidden bg-white py-24">
-          <div className="container mx-auto px-6">
+        <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+          <div className="container mx-auto px-4 sm:px-6">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
                 <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-blue-600">
                   {lang === "ja" ? "Introduction" : "Introduction"}
                 </p>
-                <h1 className="mb-4 text-5xl font-bold leading-tight text-slate-900">
+                <h1 className="mb-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
                   {profile.name[lang]}
                 </h1>
-                <p className="mb-2 text-xl font-medium text-slate-700">{profile.title[lang]}</p>
-                <p className="mb-6 text-lg text-slate-600">{profile.affiliation[lang]}</p>
-                <p className="mb-6 text-lg leading-relaxed text-slate-700">{profile.bio[lang]}</p>
+                <p className="mb-2 text-lg font-medium text-slate-700 sm:text-xl">
+                  {profile.title[lang]}
+                </p>
+                <p className="mb-4 text-base text-slate-600 sm:mb-6 sm:text-lg">
+                  {profile.affiliation[lang]}
+                </p>
+                <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
+                  {profile.bio[lang]}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {profile.keywords.map((keyword) => (
                     <span
@@ -331,12 +337,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="space-y-6 rounded-lg bg-white p-8">
+              <div className="space-y-6 rounded-lg bg-white p-5 sm:p-8">
                 <div>
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
                     {lang === "ja" ? "研究分野" : "Research Areas"}
                   </h3>
-                  <p className="text-lg text-slate-700">
+                  <p className="text-base text-slate-700 sm:text-lg">
                     {profile.researchAreas[lang].join(" / ")}
                   </p>
                 </div>
@@ -344,7 +350,7 @@ export default function Home() {
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
                     {lang === "ja" ? "拠点" : "Location"}
                   </h3>
-                  <p className="text-lg text-slate-700">{profile.location}</p>
+                  <p className="text-base text-slate-700 sm:text-lg">{profile.location}</p>
                 </div>
                 <div>
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
@@ -352,7 +358,7 @@ export default function Home() {
                   </h3>
                   <a
                     href={`mailto:${profile.email}`}
-                    className="text-lg font-medium text-blue-600 hover:underline"
+                    className="text-base font-medium text-blue-600 hover:underline sm:text-lg"
                   >
                     {profile.email}
                   </a>
@@ -377,10 +383,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="bg-white py-16">
-          <div className="container mx-auto px-6">
+        <section id="about" className="bg-white py-12 sm:py-16">
+          <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="about-title">{sectionTitle("about")}</SectionTitle>
-            <div className="space-y-4 text-lg leading-relaxed text-slate-700">
+            <div className="space-y-4 text-base leading-relaxed text-slate-700 sm:text-lg">
               <p className="font-medium">{profile.title[lang]}</p>
               <p>{profile.affiliation[lang]}</p>
               <p>{profile.bio[lang]}</p>
@@ -388,17 +394,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="education" className="bg-white py-16">
-          <div className="container mx-auto px-6">
+        <section id="education" className="bg-white py-12 sm:py-16">
+          <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="education-title">{sectionTitle("education")}</SectionTitle>
             <ul className="space-y-6">
               {education.map((item) => (
-                <li key={item.id} className="rounded-lg bg-white p-6">
+                <li key={item.id} className="rounded-lg bg-white p-4 sm:p-6">
                   <div className="mb-2 text-sm font-semibold text-slate-500">
                     {item.startYear} — {item.endYear}
                   </div>
-                  <h3 className="mb-1 text-xl font-bold text-slate-900">{item.degree[lang]}</h3>
-                  <p className="mb-1 text-lg text-slate-700">{item.institution[lang]}</p>
+                  <h3 className="mb-1 text-lg font-bold text-slate-900 sm:text-xl">
+                    {item.degree[lang]}
+                  </h3>
+                  <p className="mb-1 text-base text-slate-700 sm:text-lg">
+                    {item.institution[lang]}
+                  </p>
                   <p className="mb-2 text-slate-600">{item.department[lang]}</p>
                   <p className="text-sm italic text-slate-500">{item.note[lang]}</p>
                 </li>
@@ -407,13 +417,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="publications" className="bg-white py-16">
-          <div className="container mx-auto px-6">
+        <section id="publications" className="bg-white py-12 sm:py-16">
+          <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="publications-title">{sectionTitle("publications")}</SectionTitle>
             <div className="space-y-12">
               {(Object.keys(publicationsByCategory) as Publication["category"][]).map((category) => (
                 <div key={category}>
-                  <h3 className="mb-4 text-2xl font-bold text-slate-800">
+                  <h3 className="mb-4 text-xl font-bold text-slate-800 sm:text-2xl">
                     {categoryLabels[category][lang]}
                   </h3>
                   <ul className="space-y-4">
@@ -432,20 +442,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="others" className="bg-white py-16">
-          <div className="container mx-auto px-6">
+        <section id="others" className="bg-white py-12 sm:py-16">
+          <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="others-title">{sectionTitle("others")}</SectionTitle>
 
             <ul className="space-y-6">
               {others.map((item) => (
-                <li key={item.id} className="rounded-lg bg-white p-6">
+                <li key={item.id} className="rounded-lg bg-white p-4 sm:p-6">
                   <div className="mb-1 flex flex-wrap items-center gap-3">
                     {item.tag && (
                       <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
                         {item.tag[lang]}
                       </span>
                     )}
-                    <h4 className="text-xl font-semibold text-slate-900">{item.title[lang]}</h4>
+                    <h4 className="text-lg font-semibold text-slate-900 sm:text-xl">
+                      {item.title[lang]}
+                    </h4>
                   </div>
                   <div className="mb-2 flex flex-wrap gap-3 text-sm text-slate-600">
                     {item.context && <span>{item.context[lang]}</span>}
@@ -475,11 +487,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-white py-16">
-          <div className="container mx-auto px-6">
+        <section id="contact" className="bg-white py-12 sm:py-16">
+          <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="contact-title">{sectionTitle("contact")}</SectionTitle>
-            <div className="rounded-lg bg-white p-8">
-              <h3 className="mb-4 text-2xl font-bold text-slate-900">
+            <div className="rounded-lg bg-white p-5 sm:p-8">
+              <h3 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl">
                 {lang === "ja" ? "ご連絡はこちらから" : "Get in touch"}
               </h3>
               <p className="mb-4 text-slate-700">
@@ -488,7 +500,7 @@ export default function Home() {
               <p className="mb-4">
                 <a
                   href={`mailto:${contact.email}`}
-                  className="text-lg font-medium text-blue-600 hover:underline"
+                  className="text-base font-medium text-blue-600 hover:underline sm:text-lg"
                 >
                   {contact.email}
                 </a>
@@ -505,7 +517,7 @@ export default function Home() {
               </p>
               <a
                 href={`mailto:${contact.email}`}
-                className="inline-block rounded-lg px-6 py-3 font-semibold text-blue-700"
+                className="inline-block rounded-lg px-6 py-3 text-sm font-semibold text-blue-700 sm:text-base"
               >
                 {lang === "ja" ? "メールを送る" : "Email me"}
               </a>
@@ -515,7 +527,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-white py-8 text-slate-800">
-        <div className="container mx-auto px-6 text-center">
+        <div className="container mx-auto px-4 text-center sm:px-6">
           <p className="mb-4">
             © {new Date().getFullYear()} {profile.name[lang]}
           </p>
