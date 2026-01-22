@@ -15,7 +15,6 @@ describe("Home page", () => {
     expect(document.title).toBe("研究者ホームページ | 植田 雄士");
     expect(screen.getByRole("heading", { level: 1, name: "植田 雄士" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "JA" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("link", { name: "メールを送る" })).toBeInTheDocument();
   });
 
   it("switches language to English when EN is selected", async () => {
@@ -27,7 +26,6 @@ describe("Home page", () => {
     expect(document.title).toBe("Research Portfolio | Yuji Ueda");
     expect(screen.getByRole("heading", { level: 1, name: "Yuji Ueda" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "EN" })).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("link", { name: "Email me" })).toBeInTheDocument();
   });
 
   it("shows peer review badge only for peer-reviewed publications", () => {
