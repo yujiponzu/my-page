@@ -15,11 +15,11 @@ type Profile = {
   name: Localized;
   title: Localized;
   affiliation: Localized;
-  researchAreas: { ja: string[]; en: string[] };
-  keywords: LocalizedList;
+  researchAreas: LocalizedList;
+  keywords: LocalizedList | string[];
   bio: Localized;
   email: string;
-  location: Localized;
+  location: Localized | string;
   social: {
     twitter: string;
     facebook: string;
@@ -324,7 +324,10 @@ export default function Home() {
                   {profile.bio[lang]}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {profile.keywords[lang].map((keyword) => (
+                  {(Array.isArray(profile.keywords)
+                    ? profile.keywords
+                    : profile.keywords[lang]
+                  ).map((keyword) => (
                     <span
                       key={keyword}
                       className="text-sm font-medium text-slate-700"
@@ -348,7 +351,11 @@ export default function Home() {
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
                     {lang === "ja" ? "拠点" : "Location"}
                   </h3>
-                  <p className="text-base text-slate-700 sm:text-lg">{profile.location[lang]}</p>
+                  <p className="text-base text-slate-700 sm:text-lg">
+                    {typeof profile.location === "string"
+                      ? profile.location
+                      : profile.location[lang]}
+                  </p>
                 </div>
                 <div>
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
