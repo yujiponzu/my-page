@@ -304,7 +304,7 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+        <section className="relative overflow-hidden bg-white pb-12 pt-8 sm:py-20 lg:py-24">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <div>
