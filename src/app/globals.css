@@ -12,3 +12,11 @@ body {
   color: var(--foreground);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
+
+.nav-name {
+  font-weight: 700;
+}
+
+.nav-name-en {
+  font-family: "Times New Roman", Times, serif;
+}

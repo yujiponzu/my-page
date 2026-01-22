@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { Yuji_Boku } from "next/font/google";
 import contactJson from "../../data/contact.json";
 import educationJson from "../../data/education.json";
 import othersJson from "../../data/others.json";
@@ -66,6 +67,12 @@ type Contact = {
   addressEn: string;
   labUrl: string;
 };
+
+const yujiBoku = Yuji_Boku({
+  weight: "400",
+  subsets: ["latin", "japanese"],
+  display: "swap",
+});
 
 type DataState = {
   profile: Profile;
@@ -276,7 +283,10 @@ export default function Home() {
 
       <header className="border-b border-slate-200 bg-white">
         <nav className="container mx-auto relative flex flex-col gap-3 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-          <a href="#" className="text-lg font-bold text-slate-900 sm:text-xl">
+          <a
+            href="#"
+            className={`nav-name ${lang === "en" ? "nav-name-en" : yujiBoku.className} text-xl font-bold text-slate-900 sm:text-2xl`}
+          >
             {profile.name[lang]}
           </a>
           <div className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
