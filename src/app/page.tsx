@@ -9,16 +9,17 @@ import publicationsJson from "../../data/publications.json";
 
 type Lang = "ja" | "en";
 type Localized = { ja: string; en: string };
+type LocalizedList = { ja: string[]; en: string[] };
 
 type Profile = {
   name: Localized;
   title: Localized;
   affiliation: Localized;
   researchAreas: { ja: string[]; en: string[] };
-  keywords: string[];
+  keywords: LocalizedList;
   bio: Localized;
   email: string;
-  location: string;
+  location: Localized;
   social: {
     twitter: string;
     facebook: string;
@@ -81,19 +82,19 @@ const initialData: DataState = {
 
 
 const categoryLabels: Record<Publication["category"], Localized> = {
-  journal: { ja: "Journals", en: "Journals" },
+  journal: { ja: "ジャーナル", en: "Journals" },
   international_conference: {
-    ja: "International Conferences",
+    ja: "国際会議",
     en: "International Conferences",
   },
-  domestic_conference: { ja: "Domestic Conferences", en: "Domestic Conferences" },
+  domestic_conference: { ja: "国内学会", en: "Domestic Conferences" },
 };
 
 const sectionLabels: Record<string, Localized> = {
   about: { ja: "About", en: "About" },
-  education: { ja: "Education", en: "Education" },
-  publications: { ja: "Publications", en: "Publications" },
-  others: { ja: "Others", en: "Others" },
+  education: { ja: "学歴", en: "Education" },
+  publications: { ja: "研究業績", en: "Publications" },
+  others: { ja: "その他", en: "Others" },
 };
 
 function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
@@ -103,6 +104,7 @@ function SectionTitle({ id, children }: { id: string; children: React.ReactNode 
     </h2>
   );
 }
+
 
 function SocialIcon({ name }: { name: "twitter" | "facebook" | "github" }) {
   const commonProps = {
@@ -322,7 +324,7 @@ export default function Home() {
                   {profile.bio[lang]}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {profile.keywords.map((keyword) => (
+                  {profile.keywords[lang].map((keyword) => (
                     <span
                       key={keyword}
                       className="text-sm font-medium text-slate-700"
@@ -346,7 +348,7 @@ export default function Home() {
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
                     {lang === "ja" ? "拠点" : "Location"}
                   </h3>
-                  <p className="text-base text-slate-700 sm:text-lg">{profile.location}</p>
+                  <p className="text-base text-slate-700 sm:text-lg">{profile.location[lang]}</p>
                 </div>
                 <div>
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
