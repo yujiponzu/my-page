@@ -1,4 +1,2 @@
-#!/usr/bin/env sh
-
 # Run staged lint checks before commit
 npx lint-staged
