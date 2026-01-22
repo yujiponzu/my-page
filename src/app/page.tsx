@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Yuji_Boku } from "next/font/google";
-import contactJson from "../../data/contact.json";
 import educationJson from "../../data/education.json";
 import othersJson from "../../data/others.json";
 import profileJson from "../../data/profile.json";
@@ -61,13 +60,6 @@ type OtherItem = {
   description: Localized;
 };
 
-type Contact = {
-  email: string;
-  addressJa: string;
-  addressEn: string;
-  labUrl: string;
-};
-
 const yujiBoku = Yuji_Boku({
   weight: "400",
   subsets: ["latin", "japanese"],
@@ -79,7 +71,6 @@ type DataState = {
   education: EducationItem[];
   publications: Publication[];
   others: OtherItem[];
-  contact: Contact;
 };
 
 const initialData: DataState = {
@@ -87,7 +78,6 @@ const initialData: DataState = {
   education: educationJson as EducationItem[],
   publications: publicationsJson as Publication[],
   others: othersJson as OtherItem[],
-  contact: contactJson as Contact,
 };
 
 
@@ -105,7 +95,6 @@ const sectionLabels: Record<string, Localized> = {
   education: { ja: "Education", en: "Education" },
   publications: { ja: "Publications", en: "Publications" },
   others: { ja: "Others", en: "Others" },
-  contact: { ja: "Contact", en: "Contact" },
 };
 
 function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
@@ -208,15 +197,14 @@ export default function Home() {
 
     const loadData = async () => {
       try {
-        const [profile, education, publications, others, contact] = await Promise.all([
+        const [profile, education, publications, others] = await Promise.all([
           fetchJson<Profile>("/api/data/profile"),
           fetchJson<EducationItem[]>("/api/data/education"),
           fetchJson<Publication[]>("/api/data/publications"),
           fetchJson<OtherItem[]>("/api/data/others"),
-          fetchJson<Contact>("/api/data/contact"),
         ]);
         if (isCancelled) return;
-        setData({ profile, education, publications, others, contact });
+        setData({ profile, education, publications, others });
       } catch (err) {
         console.error(err);
         setError("データの取得に失敗しました。");
@@ -248,7 +236,6 @@ export default function Home() {
     { id: "education", label: sectionLabels.education[lang] },
     { id: "publications", label: sectionLabels.publications[lang] },
     { id: "others", label: sectionLabels.others[lang] },
-    { id: "contact", label: sectionLabels.contact[lang] },
   ];
 
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
@@ -269,7 +256,7 @@ export default function Home() {
     );
   }
 
-  const { profile, education, others, contact } = data;
+  const { profile, education, others } = data;
 
   const socialLinks = [
     { name: "github" as const, label: "GitHub", url: profile.social.github },
@@ -497,43 +484,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-white py-12 sm:py-16">
-          <div className="container mx-auto px-4 sm:px-6">
-            <SectionTitle id="contact-title">{sectionTitle("contact")}</SectionTitle>
-            <div className="rounded-lg bg-white p-5 sm:p-8">
-              <h3 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl">
-                {lang === "ja" ? "ご連絡はこちらから" : "Get in touch"}
-              </h3>
-              <p className="mb-4 text-slate-700">
-                {lang === "ja" ? contact.addressJa : contact.addressEn}
-              </p>
-              <p className="mb-4">
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="text-base font-medium text-blue-600 hover:underline sm:text-lg"
-                >
-                  {contact.email}
-                </a>
-              </p>
-              <p className="mb-6">
-                <a
-                  href={contact.labUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-blue-600 hover:underline"
-                >
-                  {lang === "ja" ? "研究室ページ" : "Lab page"} ↗
-                </a>
-              </p>
-              <a
-                href={`mailto:${contact.email}`}
-                className="inline-block rounded-lg px-6 py-3 text-sm font-semibold text-blue-700 sm:text-base"
-              >
-                {lang === "ja" ? "メールを送る" : "Email me"}
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="bg-white py-8 text-slate-800">
