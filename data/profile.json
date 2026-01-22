@@ -12,13 +12,16 @@
     "ja": ["大規模言語モデル", "情報的健康"],
     "en": ["Large Language Models", "Digital Well-Being"]
   },
-  "keywords": ["Large Language Model", "Echo Chamber", "Filter Bubble"],
+  "keywords": {
+    "ja": ["大規模言語モデル", "エコーチェンバー", "フィルターバブル"],
+    "en": ["Large Language Models", "Echo Chamber", "Filter Bubble"]
+  },
   "bio": {
     "ja": "フィルターバブルやエコーチェンバーといった閉鎖的な情報空間からの脱出による情報的健康への行動変容について研究しております．またその一環としてLLMの政治バイアスについても研究しています．",
     "en": "I study behavioral changes that promote digital well-being by enabling individuals to escape closed information environments such as filter bubbles and echo chambers. As part of this research, I also investigate political biases in large language models (LLMs)."
   },
   "email": "ueda.yuji.vb4[at]naist.ac.jp",
-  "location": "Nara, Japan",
+  "location": { "ja": "奈良, 日本", "en": "Nara, Japan" },
   "social": {
     "twitter": "https://twitter.com/yujipinzu0417",
     "facebook": "https://www.facebook.com/p/植田雄士-61577329245255/",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import contactJson from "../../data/contact.json";
+import { Yuji_Boku } from "next/font/google";
 import educationJson from "../../data/education.json";
 import othersJson from "../../data/others.json";
 import profileJson from "../../data/profile.json";
@@ -9,16 +9,17 @@ import publicationsJson from "../../data/publications.json";
 
 type Lang = "ja" | "en";
 type Localized = { ja: string; en: string };
+type LocalizedList = { ja: string[]; en: string[] };
 
 type Profile = {
   name: Localized;
   title: Localized;
   affiliation: Localized;
   researchAreas: { ja: string[]; en: string[] };
-  keywords: string[];
+  keywords: LocalizedList;
   bio: Localized;
   email: string;
-  location: string;
+  location: Localized;
   social: {
     twitter: string;
     facebook: string;
@@ -60,19 +61,16 @@ type OtherItem = {
   description: Localized;
 };
 
-type Contact = {
-  email: string;
-  addressJa: string;
-  addressEn: string;
-  labUrl: string;
-};
+const yujiBoku = Yuji_Boku({
+  weight: "400",
+  display: "swap",
+});
 
 type DataState = {
   profile: Profile;
   education: EducationItem[];
   publications: Publication[];
   others: OtherItem[];
-  contact: Contact;
 };
 
 const initialData: DataState = {
@@ -80,25 +78,23 @@ const initialData: DataState = {
   education: educationJson as EducationItem[],
   publications: publicationsJson as Publication[],
   others: othersJson as OtherItem[],
-  contact: contactJson as Contact,
 };
 
 
 const categoryLabels: Record<Publication["category"], Localized> = {
-  journal: { ja: "Journals", en: "Journals" },
+  journal: { ja: "ジャーナル", en: "Journals" },
   international_conference: {
-    ja: "International Conferences",
+    ja: "国際会議",
     en: "International Conferences",
   },
-  domestic_conference: { ja: "Domestic Conferences", en: "Domestic Conferences" },
+  domestic_conference: { ja: "国内学会", en: "Domestic Conferences" },
 };
 
 const sectionLabels: Record<string, Localized> = {
   about: { ja: "About", en: "About" },
-  education: { ja: "Education", en: "Education" },
-  publications: { ja: "Publications", en: "Publications" },
-  others: { ja: "Others", en: "Others" },
-  contact: { ja: "Contact", en: "Contact" },
+  education: { ja: "学歴", en: "Education" },
+  publications: { ja: "研究業績", en: "Publications" },
+  others: { ja: "その他", en: "Others" },
 };
 
 function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
@@ -108,6 +104,7 @@ function SectionTitle({ id, children }: { id: string; children: React.ReactNode 
     </h2>
   );
 }
+
 
 function SocialIcon({ name }: { name: "twitter" | "facebook" | "github" }) {
   const commonProps = {
@@ -201,15 +198,14 @@ export default function Home() {
 
     const loadData = async () => {
       try {
-        const [profile, education, publications, others, contact] = await Promise.all([
+        const [profile, education, publications, others] = await Promise.all([
           fetchJson<Profile>("/api/data/profile"),
           fetchJson<EducationItem[]>("/api/data/education"),
           fetchJson<Publication[]>("/api/data/publications"),
           fetchJson<OtherItem[]>("/api/data/others"),
-          fetchJson<Contact>("/api/data/contact"),
         ]);
         if (isCancelled) return;
-        setData({ profile, education, publications, others, contact });
+        setData({ profile, education, publications, others });
       } catch (err) {
         console.error(err);
         setError("データの取得に失敗しました。");
@@ -241,7 +237,6 @@ export default function Home() {
     { id: "education", label: sectionLabels.education[lang] },
     { id: "publications", label: sectionLabels.publications[lang] },
     { id: "others", label: sectionLabels.others[lang] },
-    { id: "contact", label: sectionLabels.contact[lang] },
   ];
 
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
@@ -262,7 +257,7 @@ export default function Home() {
     );
   }
 
-  const { profile, education, others, contact } = data;
+  const { profile, education, others } = data;
 
   const socialLinks = [
     { name: "github" as const, label: "GitHub", url: profile.social.github },
@@ -276,7 +271,10 @@ export default function Home() {
 
       <header className="border-b border-slate-200 bg-white">
         <nav className="container mx-auto relative flex flex-col gap-3 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-          <a href="#" className="text-lg font-bold text-slate-900 sm:text-xl">
+          <a
+            href="#"
+            className={`nav-name ${lang === "en" ? "nav-name-en" : yujiBoku.className} text-xl font-bold text-slate-900 sm:text-2xl`}
+          >
             {profile.name[lang]}
           </a>
           <div className="flex flex-wrap items-center gap-4 text-sm sm:text-base">
@@ -326,7 +324,7 @@ export default function Home() {
                   {profile.bio[lang]}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {profile.keywords.map((keyword) => (
+                  {profile.keywords[lang].map((keyword) => (
                     <span
                       key={keyword}
                       className="text-sm font-medium text-slate-700"
@@ -350,7 +348,7 @@ export default function Home() {
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
                     {lang === "ja" ? "拠点" : "Location"}
                   </h3>
-                  <p className="text-base text-slate-700 sm:text-lg">{profile.location}</p>
+                  <p className="text-base text-slate-700 sm:text-lg">{profile.location[lang]}</p>
                 </div>
                 <div>
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
@@ -487,43 +485,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-white py-12 sm:py-16">
-          <div className="container mx-auto px-4 sm:px-6">
-            <SectionTitle id="contact-title">{sectionTitle("contact")}</SectionTitle>
-            <div className="rounded-lg bg-white p-5 sm:p-8">
-              <h3 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl">
-                {lang === "ja" ? "ご連絡はこちらから" : "Get in touch"}
-              </h3>
-              <p className="mb-4 text-slate-700">
-                {lang === "ja" ? contact.addressJa : contact.addressEn}
-              </p>
-              <p className="mb-4">
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="text-base font-medium text-blue-600 hover:underline sm:text-lg"
-                >
-                  {contact.email}
-                </a>
-              </p>
-              <p className="mb-6">
-                <a
-                  href={contact.labUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-blue-600 hover:underline"
-                >
-                  {lang === "ja" ? "研究室ページ" : "Lab page"} ↗
-                </a>
-              </p>
-              <a
-                href={`mailto:${contact.email}`}
-                className="inline-block rounded-lg px-6 py-3 text-sm font-semibold text-blue-700 sm:text-base"
-              >
-                {lang === "ja" ? "メールを送る" : "Email me"}
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer className="bg-white py-8 text-slate-800">
@@ -531,21 +492,6 @@ export default function Home() {
           <p className="mb-4">
             © {new Date().getFullYear()} {profile.name[lang]}
           </p>
-          <div className="flex justify-center gap-6">
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition hover:text-blue-600"
-                aria-label={social.label}
-              >
-                <SocialIcon name={social.name} />
-                <span className="sr-only">{social.label}</span>
-              </a>
-            ))}
-          </div>
         </div>
       </footer>
     </div>
