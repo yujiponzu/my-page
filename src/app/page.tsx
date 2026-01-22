@@ -304,9 +304,9 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="relative overflow-hidden bg-white pb-12 pt-8 sm:py-20 lg:py-24">
+        <section className="relative overflow-hidden bg-white pb-12 pt-8 sm:py-16 lg:pb-12 lg:pt-6">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="grid items-center gap-8 sm:gap-10 lg:gap-8 lg:grid-cols-2">
               <div>
                 <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-blue-600">
                   {lang === "ja" ? "Introduction" : "Introduction"}
