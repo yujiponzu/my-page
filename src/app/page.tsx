@@ -541,21 +541,6 @@ export default function Home() {
           <p className="mb-4">
             © {new Date().getFullYear()} {profile.name[lang]}
           </p>
-          <div className="flex justify-center gap-6">
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition hover:text-blue-600"
-                aria-label={social.label}
-              >
-                <SocialIcon name={social.name} />
-                <span className="sr-only">{social.label}</span>
-              </a>
-            ))}
-          </div>
         </div>
       </footer>
     </div>
