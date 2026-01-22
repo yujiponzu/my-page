@@ -54,5 +54,22 @@
       "ja": "大規模言語モデル（LLM）の政治的バイアスは社会的影響を及ぼすが，その操作性は主に一次元的な枠組みでしか評価されてこなかった．本研究は，現実の政治的多様性を反映するため，経済軸と社会軸の二軸による政治スタンスを導入し，13のLLMに対してPolitical Compass Testを用いて操作性を分析した．結果，LLMは経済・社会の両軸が一致する場合には比較的高い操作性を示したが，相反する軸を同時に操作することは困難であった．特に社会軸では変化が小さく，経済軸よりも操作性が小さい傾向が見られた．",
       "en": "Although the political biases of large language models (LLMs) can have significant social impacts, their steerability has mainly been evaluated within a one-dimensional framework. To better reflect real-world political diversity, this study introduces a two-dimensional representation of political stance—comprising economic and social axes—and analyzes the steerability of 13 LLMs using the Political Compass Test. The results show that LLMs exhibit relatively high steerability when the economic and social axes are aligned; however, simultaneously steering opposing axes is challenging. In particular, changes along the social axis are limited, indicating lower steerability compared to the economic axis."
     }
+  },
+    {
+    "id": "paper-004",
+    "category": "journal",
+    "title": {
+      "ja": "文脈内学習による政治イデオロギーを持つLLMエージェントの生成",
+      "en": "Generation of LLM Agents with Political Ideologies through In-Context Learning"
+    },
+    "authors": "植田 雄士, 諏訪 博彦",
+    "venue": { "ja": "情報処理学会論文誌", "en": "Journal of Information Processing" },
+    "year": 2026,
+    "peerReviewed": true,
+    "links": [{ "label": { "ja": "準備中", "en": "To Appear" }, "url": "" }],
+    "description": {
+      "ja": "",
+      "en": ""
+    }
   }
 ]
