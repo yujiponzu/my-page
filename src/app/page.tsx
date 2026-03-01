@@ -239,9 +239,9 @@ export default function Home() {
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
   const pageTitle = data
     ? lang === "ja"
-      ? `研究者ホームページ | ${data.profile.name[lang]}`
-      : `Research Portfolio | ${data.profile.name[lang]}`
-    : "Research Portfolio";
+      ? `植田雄士のホームページ | ${data.profile.name[lang]}`
+      : `Yuji Ueda's Page | ${data.profile.name[lang]}`
+    : "Yuji Ueda's Page";
 
   if (!data) {
     return (

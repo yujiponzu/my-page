@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "研究者ポートフォリオ",
+  title: "植田雄士のホームページ",
   description: "Researcher homepage built with Next.js",
 };
 
