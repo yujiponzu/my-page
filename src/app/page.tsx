@@ -14,7 +14,6 @@ type LocalizedList = { ja: string[]; en: string[] };
 type Profile = {
   name: Localized;
   title: Localized;
-  affiliation: Localized;
   researchAreas: LocalizedList;
   keywords: LocalizedList | string[];
   bio: Localized;
@@ -36,7 +35,6 @@ type Publication = {
   year: number;
   peerReviewed: boolean;
   links?: { label: Localized; url: string }[];
-  description: Localized;
 };
 
 type EducationItem = {
@@ -155,7 +153,6 @@ function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
       </div>
       <h4 className="mb-1 text-lg font-semibold text-slate-900">{item.title[lang]}</h4>
       <p className="mb-2 text-sm text-slate-600">{item.authors}</p>
-      <p className="mb-3 text-sm leading-relaxed text-slate-700">{item.description[lang]}</p>
       {item.links && (
         <div className="flex flex-wrap gap-2">
           {item.links.map((link) => (
@@ -242,9 +239,9 @@ export default function Home() {
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
   const pageTitle = data
     ? lang === "ja"
-      ? `研究者ホームページ | ${data.profile.name[lang]}`
-      : `Research Portfolio | ${data.profile.name[lang]}`
-    : "Research Portfolio";
+      ? `植田雄士のホームページ | ${data.profile.name[lang]}`
+      : `Yuji Ueda's Page | ${data.profile.name[lang]}`
+    : "Yuji Ueda's Page";
 
   if (!data) {
     return (
@@ -314,11 +311,8 @@ export default function Home() {
                 <h1 className="mb-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
                   {profile.name[lang]}
                 </h1>
-                <p className="mb-2 text-lg font-medium text-slate-700 sm:text-xl">
+                <p className="mb-2 text-lg font-medium text-slate-700 sm:text-xl lg:whitespace-nowrap lg:text-lg xl:text-xl">
                   {profile.title[lang]}
-                </p>
-                <p className="mb-4 text-base text-slate-600 sm:mb-6 sm:text-lg">
-                  {profile.affiliation[lang]}
                 </p>
                 <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
                   {profile.bio[lang]}
@@ -393,7 +387,6 @@ export default function Home() {
             <SectionTitle id="about-title">{sectionTitle("about")}</SectionTitle>
             <div className="space-y-4 text-base leading-relaxed text-slate-700 sm:text-lg">
               <p className="font-medium">{profile.title[lang]}</p>
-              <p>{profile.affiliation[lang]}</p>
               <p>{profile.bio[lang]}</p>
             </div>
           </div>
