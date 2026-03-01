@@ -94,5 +94,20 @@
         "url": ""
       }
     ]
+  },
+  {
+    "id": "paper-005",
+    "category": "domestic_conference",
+    "title": {
+      "ja": "政治スタンスの2次元的定義に基づくLLMのスタンス操作性：PE・DPO・CPTの比較",
+      "en": "Steerability of LLM Stance Based on a Two-Dimensional Definition of Political Orientation: A Comparison of PE, DPO, and CPT"
+    },
+    "authors": "植田雄士, 上田健太郎, 鳥海不二夫, 荒川豊, 安本慶一, 諏訪博彦",
+    "venue": {
+      "ja": "第5回計算社会科学会大会",
+      "en": "Society for Computational Social Science of Japan"
+    },
+    "year": 2026,
+    "peerReviewed": false
   }
 ]
