@@ -311,7 +311,7 @@ export default function Home() {
                 <h1 className="mb-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
                   {profile.name[lang]}
                 </h1>
-                <p className="mb-2 text-lg font-medium text-slate-700 sm:text-xl">
+                <p className="mb-2 text-lg font-medium text-slate-700 sm:text-xl lg:whitespace-nowrap lg:text-lg xl:text-xl">
                   {profile.title[lang]}
                 </p>
                 <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
