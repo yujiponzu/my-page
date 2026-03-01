@@ -14,12 +14,14 @@
     "year": 2025,
     "peerReviewed": true,
     "links": [
-      { "label": { "ja": "DOI", "en": "DOI" }, "url": "https://doi.org/10.1007/978-3-031-94171-9_41"}
-    ],
-    "description": {
-      "ja": "アルゴリズムの発展やソーシャル・ネットワーキング・サービスの普及は、意見の分極化やフェイクニュースの温床となり得るフィルターバブルを引き起こしている。仮想的な体験が人々の行動に影響を与えることを示す既存研究に基づき、私たちは、体験可能な疑似フィルターバブルがフィルターバブルの危険性への気づきを促し、それに陥ることを防ぐ可能性があると仮説を立てた。体験可能な疑似フィルターバブルを生成するために、本研究では、検索クエリの生成などのインターネット上の行動を模倣できる、特定の政治的イデオロギーを持つLLMエージェントの生成を目指す。さらに、より多様なイデオロギーを持つLLMエージェントを生成するため、LLMに内在する左寄りのバイアスを緩和する。その結果、プロンプトエンジニアリングのみによるエージェントのバイアス緩和に加えて、極左からほぼ極右に至るまで、多様なイデオロギーを持つエージェントの生成に成功した。本成果は、プロンプトエンジニアリングの適用可能性を拡張するものであり、疑似フィルターバブルの構築に向けた第一歩となり得る。",
-      "en": "The development of algorithms and the spread of social networking services cause filter bubbles that can contribute to the polarization of opinions and the breeding ground for fake news. Based on existing research that suggests virtual experiences influence people’s behavior, we hypothesize that experience able pseudo-filter bubbles can make people aware of the danger of filter bubbles and prevent them from falling into them. In order to generate experience able pseudo-filter bubbles, we aim to generate LLM agents with political ideologies that can imitate Internet actions, such as generating search queries. Furthermore, we mitigate the inherent left-leaning bias of the LLM so that we can generate LLM agents with more various ideologies. As a result, in addition to mitigating agents’ bias through prompt engineering alone, we have succeeded in generating agents with various ideologies, including extreme left-wing and almost extreme right-wing ideologies. This result expands the applicability of prompt engineering and can be the first step in creating pseudo-filter bubbles."
-    }
+      {
+        "label": {
+          "ja": "DOI",
+          "en": "DOI"
+        },
+        "url": "https://doi.org/10.1007/978-3-031-94171-9_41"
+      }
+    ]
   },
   {
     "id": "paper-002",
@@ -29,14 +31,21 @@
       "en": "The generation of LLM agents with political ideologies"
     },
     "authors": "植田 雄士, 諏訪 博彦",
-    "venue": { "ja": "情報処理学会 コラボレーションとネットワークサービスワークショップ(CNWS) 2024", "en": "IPSJ collaboration and Network Service Workshop (CNWS) 2024" },
+    "venue": {
+      "ja": "情報処理学会 コラボレーションとネットワークサービスワークショップ(CNWS) 2024",
+      "en": "IPSJ collaboration and Network Service Workshop (CNWS) 2024"
+    },
     "year": 2024,
     "peerReviewed": true,
-    "links": [{ "label": { "ja": "IPSJ", "en": "IPSJ" }, "url": "https://ipsj.ixsq.nii.ac.jp/records/240630" }],
-    "description": {
-      "ja": "アルゴリズムの発達や SNS の普及により，意見の分極化の原因やフェイクニュースの温床となり得るフィルターバブルが社会問題として発生している．ユーザーが体験できるような疑似的なフィルターバブルが予防や緩和になるという仮説のもと，本稿では，LLM が持つ政治的なバイアスを緩和した上で，フィルターバブルを再現するのに必要な，政治イデオロギーを持つ LLM エージェントの生成を試みた．その結果，プロンプト操作のみでバイアスの緩和に加え，極右に近いイデオロギーや極左・中道をはじめとする様々なイデオロギーを持つエージェントの生成に成功した．",
-      "en": "The development of algorithms and the widespread use of social networking services (SNS) have given rise to filter bubbles as a social issue, as they can contribute to opinion polarization and serve as breeding grounds for fake news. Based on the hypothesis that experienceable pseudo-filter bubbles can help prevent or mitigate these effects, this paper attempts to generate LLM agents with political ideologies necessary for reproducing filter bubbles, while mitigating the political biases inherent in LLMs. As a result, through prompt manipulation alone, we successfully generated agents with a wide range of ideologies, including extreme-left, centrist, and near–extreme-right positions, in addition to mitigating bias."
-    }
+    "links": [
+      {
+        "label": {
+          "ja": "IPSJ",
+          "en": "IPSJ"
+        },
+        "url": "https://ipsj.ixsq.nii.ac.jp/records/240630"
+      }
+    ]
   },
   {
     "id": "paper-003",
@@ -46,16 +55,23 @@
       "en": "A Study on the Steerability of Large Language Models Based on Two-Dimensional Political Orientation Inputs"
     },
     "authors": "植田 雄士, 上田 健太郎, 諏訪 博彦, 鳥海 不二夫, 荒川豊, 安本慶一",
-    "venue": { "ja": "人工知能学会 創律計算科学研究会", "en": "SIG-Computational Scale Science" },
+    "venue": {
+      "ja": "人工知能学会 創律計算科学研究会",
+      "en": "SIG-Computational Scale Science"
+    },
     "year": 2025,
     "peerReviewed": false,
-    "links": [{ "label": { "ja": "DOI", "en": "DOI" }, "url": "https://doi.org/10.11517/jsaisigtwo.2025.CSS-001_22" }],
-    "description": {
-      "ja": "大規模言語モデル（LLM）の政治的バイアスは社会的影響を及ぼすが，その操作性は主に一次元的な枠組みでしか評価されてこなかった．本研究は，現実の政治的多様性を反映するため，経済軸と社会軸の二軸による政治スタンスを導入し，13のLLMに対してPolitical Compass Testを用いて操作性を分析した．結果，LLMは経済・社会の両軸が一致する場合には比較的高い操作性を示したが，相反する軸を同時に操作することは困難であった．特に社会軸では変化が小さく，経済軸よりも操作性が小さい傾向が見られた．",
-      "en": "Although the political biases of large language models (LLMs) can have significant social impacts, their steerability has mainly been evaluated within a one-dimensional framework. To better reflect real-world political diversity, this study introduces a two-dimensional representation of political stance—comprising economic and social axes—and analyzes the steerability of 13 LLMs using the Political Compass Test. The results show that LLMs exhibit relatively high steerability when the economic and social axes are aligned; however, simultaneously steering opposing axes is challenging. In particular, changes along the social axis are limited, indicating lower steerability compared to the economic axis."
-    }
+    "links": [
+      {
+        "label": {
+          "ja": "DOI",
+          "en": "DOI"
+        },
+        "url": "https://doi.org/10.11517/jsaisigtwo.2025.CSS-001_22"
+      }
+    ]
   },
-    {
+  {
     "id": "paper-004",
     "category": "journal",
     "title": {
@@ -63,13 +79,20 @@
       "en": "Generation of LLM Agents with Political Ideologies through In-Context Learning"
     },
     "authors": "植田 雄士, 諏訪 博彦",
-    "venue": { "ja": "情報処理学会論文誌", "en": "Journal of Information Processing" },
+    "venue": {
+      "ja": "情報処理学会論文誌",
+      "en": "Journal of Information Processing"
+    },
     "year": 2026,
     "peerReviewed": true,
-    "links": [{ "label": { "ja": "準備中", "en": "To Appear" }, "url": "" }],
-    "description": {
-      "ja": "",
-      "en": ""
-    }
+    "links": [
+      {
+        "label": {
+          "ja": "準備中",
+          "en": "To Appear"
+        },
+        "url": ""
+      }
+    ]
   }
 ]

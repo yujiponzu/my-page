@@ -35,7 +35,6 @@ type Publication = {
   year: number;
   peerReviewed: boolean;
   links?: { label: Localized; url: string }[];
-  description: Localized;
 };
 
 type EducationItem = {
@@ -154,7 +153,6 @@ function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
       </div>
       <h4 className="mb-1 text-lg font-semibold text-slate-900">{item.title[lang]}</h4>
       <p className="mb-2 text-sm text-slate-600">{item.authors}</p>
-      <p className="mb-3 text-sm leading-relaxed text-slate-700">{item.description[lang]}</p>
       {item.links && (
         <div className="flex flex-wrap gap-2">
           {item.links.map((link) => (
