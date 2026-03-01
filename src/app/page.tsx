@@ -14,7 +14,6 @@ type LocalizedList = { ja: string[]; en: string[] };
 type Profile = {
   name: Localized;
   title: Localized;
-  affiliation: Localized;
   researchAreas: LocalizedList;
   keywords: LocalizedList | string[];
   bio: Localized;
@@ -317,9 +316,6 @@ export default function Home() {
                 <p className="mb-2 text-lg font-medium text-slate-700 sm:text-xl">
                   {profile.title[lang]}
                 </p>
-                <p className="mb-4 text-base text-slate-600 sm:mb-6 sm:text-lg">
-                  {profile.affiliation[lang]}
-                </p>
                 <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
                   {profile.bio[lang]}
                 </p>
@@ -393,7 +389,6 @@ export default function Home() {
             <SectionTitle id="about-title">{sectionTitle("about")}</SectionTitle>
             <div className="space-y-4 text-base leading-relaxed text-slate-700 sm:text-lg">
               <p className="font-medium">{profile.title[lang]}</p>
-              <p>{profile.affiliation[lang]}</p>
               <p>{profile.bio[lang]}</p>
             </div>
           </div>

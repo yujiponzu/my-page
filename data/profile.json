@@ -1,12 +1,8 @@
 {
   "name": { "ja": "植田 雄士", "en": "Yuji Ueda" },
   "title": {
-    "ja": "奈良先端科学技術大学院大学　ユビキタスコンピューティングシステム研究室 修士",
+    "ja": "奈良先端科学技術大学院大学　ユビキタスコンピューティングシステム研究室 博士前期課程",
     "en": "Master’s Student, Ubiquitous Computing Systems Laboratory, Nara Institute of Science and Technology"
-  },
-  "affiliation": {
-    "ja": "情報科学領域",
-    "en": "Division of Information Science"
   },
   "researchAreas": {
     "ja": ["大規模言語モデル", "情報的健康"],
