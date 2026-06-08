@@ -6,6 +6,10 @@ import publicationsData from "../../data/publications.json";
 type Publication = {
   title: { ja: string; en: string };
   peerReviewed: boolean;
+  volume?: string;
+  number?: string;
+  pages?: string;
+  location?: { ja: string; en: string };
 };
 
 describe("Home page", () => {
@@ -52,5 +56,42 @@ describe("Home page", () => {
       throw new Error("Non peer-reviewed publication element not found");
     }
     expect(within(nonReviewedItem).queryByText("査読有")).toBeNull();
+  });
+
+  it("shows publication metadata when available", async () => {
+    const publication = (publicationsData as Publication[]).find(
+      (p) => p.pages && p.location,
+    );
+
+    if (!publication?.volume || !publication.pages || !publication.location) {
+      throw new Error("Publication data missing metadata entry");
+    }
+
+    const user = userEvent.setup();
+    render(<Home />);
+
+    const jaHeading = screen.getByText(publication.title.ja);
+    const jaItem = jaHeading.closest("li");
+    if (!jaItem) {
+      throw new Error("Publication element not found");
+    }
+
+    expect(
+      within(jaItem).getByText(`vol.${publication.volume}, p.${publication.pages}, ${publication.location.ja}`),
+    ).toBeInTheDocument();
+
+    await user.click(screen.getByRole("button", { name: "EN" }));
+
+    const enHeading = screen.getByText(publication.title.en);
+    const enItem = enHeading.closest("li");
+    if (!enItem) {
+      throw new Error("Publication element not found after language switch");
+    }
+
+    expect(
+      within(enItem).getByText(
+        `vol.${publication.volume}, p.${publication.pages}, ${publication.location.en}`,
+      ),
+    ).toBeInTheDocument();
   });
 });
