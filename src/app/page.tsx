@@ -148,9 +148,15 @@ function PeerReviewBadge({ lang }: { lang: Lang }) {
 }
 
 function PublicationMetadata({ item, lang }: { item: Publication; lang: Lang }) {
+  const journalDetails =
+    item.category === "journal"
+      ? [
+          item.volume ? `vol.${item.volume}` : null,
+          item.number ? `no.${item.number}` : null,
+        ]
+      : [];
   const details = [
-    item.volume ? `vol.${item.volume}` : null,
-    item.number ? `no.${item.number}` : null,
+    ...journalDetails,
     item.pages ? `p.${item.pages}` : null,
     item.category !== "journal" && item.location ? item.location[lang] : null,
   ].filter(Boolean);

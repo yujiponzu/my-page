@@ -5,6 +5,7 @@ import publicationsData from "../../data/publications.json";
 
 type Publication = {
   title: { ja: string; en: string };
+  category: "journal" | "international_conference" | "domestic_conference";
   peerReviewed: boolean;
   volume?: string;
   number?: string;
@@ -60,10 +61,10 @@ describe("Home page", () => {
 
   it("shows publication metadata when available", async () => {
     const publication = (publicationsData as Publication[]).find(
-      (p) => p.pages && p.location,
+      (p) => p.category !== "journal" && p.pages && p.location,
     );
 
-    if (!publication?.volume || !publication.pages || !publication.location) {
+    if (!publication?.pages || !publication.location) {
       throw new Error("Publication data missing metadata entry");
     }
 
@@ -77,8 +78,10 @@ describe("Home page", () => {
     }
 
     expect(
-      within(jaItem).getByText(`vol.${publication.volume}, p.${publication.pages}, ${publication.location.ja}`),
+      within(jaItem).getByText(`p.${publication.pages}, ${publication.location.ja}`),
     ).toBeInTheDocument();
+    expect(within(jaItem).queryByText(/vol\./)).toBeNull();
+    expect(within(jaItem).queryByText(/no\./)).toBeNull();
 
     await user.click(screen.getByRole("button", { name: "EN" }));
 
@@ -89,9 +92,7 @@ describe("Home page", () => {
     }
 
     expect(
-      within(enItem).getByText(
-        `vol.${publication.volume}, p.${publication.pages}, ${publication.location.en}`,
-      ),
+      within(enItem).getByText(`p.${publication.pages}, ${publication.location.en}`),
     ).toBeInTheDocument();
   });
 });
