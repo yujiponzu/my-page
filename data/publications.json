@@ -38,20 +38,24 @@
     },
     "authors": "植田 雄士, 諏訪 博彦",
     "venue": {
-      "ja": "情報処理学会 コラボレーションとネットワークサービスワークショップ",
-      "en": "IPSJ collaboration and Network Service Workshop"
+      "ja": "情報処理学会 コラボレーションとネットワークサービスワークショップ2024 (CN Workshop ’24)",
+      "en": "IPSJ collaboration and Network Service Workshop 2024 (CN Workshop ’24)"
     },
     "year": 2024,
     "peerReviewed": true,
     "links": [
       {
         "label": {
-          "ja": "IPSJ",
-          "en": "IPSJ"
+          "ja": "リンク",
+          "en": "Link"
         },
         "url": "https://ipsj.ixsq.nii.ac.jp/records/240630"
       }
-    ]
+    ],
+    "location": {
+      "ja": "加賀",
+      "en": "Kaga"
+    }
   },
   {
     "id": "paper-003",
@@ -67,9 +71,11 @@
     },
     "year": 2025,
     "peerReviewed": false,
-    "volume": "2025",
-    "number": "CSS-001",
     "pages": "22-28",
+    "location": {
+      "ja": "横浜",
+      "en": "Yokohama"
+    },
     "links": [
       {
         "label": {
@@ -94,13 +100,16 @@
     },
     "year": 2026,
     "peerReviewed": true,
+    "volume": "67",
+    "number": "4",
+    "pages": "895-904",
     "links": [
       {
         "label": {
-          "ja": "準備中",
-          "en": "To Appear"
+          "ja": "リンク",
+          "en": "Link"
         },
-        "url": ""
+        "url": "https://www.ipsj.or.jp/journal/info/accept/january.html"
       }
     ]
   },
@@ -119,8 +128,8 @@
     "year": 2026,
     "peerReviewed": false,
     "location": {
-      "ja": "日本・浜松",
-      "en": "Hamamatsu, Japan"
+      "ja": "浜松",
+      "en": "Hamamatsu"
     }
   }
 ]

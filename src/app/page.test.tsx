@@ -17,7 +17,7 @@ describe("Home page", () => {
   it("shows Japanese content by default", () => {
     render(<Home />);
 
-    expect(document.title).toBe("植田雄士のホームページ | 植田 雄士");
+    expect(document.title).toBe("植田雄士");
     expect(screen.getByRole("heading", { level: 1, name: "植田 雄士" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "JA" })).toHaveAttribute("aria-pressed", "true");
   });

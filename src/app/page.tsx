@@ -265,9 +265,9 @@ export default function Home() {
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
   const pageTitle = data
     ? lang === "ja"
-      ? `植田雄士のホームページ | ${data.profile.name[lang]}`
+      ? "植田雄士"
       : `Yuji Ueda's Page | ${data.profile.name[lang]}`
-    : "Yuji Ueda's Page";
+    : "植田雄士";
 
   if (!data) {
     return (
