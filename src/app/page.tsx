@@ -34,6 +34,10 @@ type Publication = {
   venue: Localized;
   year: number;
   peerReviewed: boolean;
+  volume?: string;
+  number?: string;
+  pages?: string;
+  location?: Localized;
   links?: { label: Localized; url: string }[];
 };
 
@@ -143,6 +147,27 @@ function PeerReviewBadge({ lang }: { lang: Lang }) {
   );
 }
 
+function PublicationMetadata({ item, lang }: { item: Publication; lang: Lang }) {
+  const journalDetails =
+    item.category === "journal"
+      ? [
+          item.volume ? `vol.${item.volume}` : null,
+          item.number ? `no.${item.number}` : null,
+        ]
+      : [];
+  const details = [
+    ...journalDetails,
+    item.pages ? `p.${item.pages}` : null,
+    item.category !== "journal" && item.location ? item.location[lang] : null,
+  ].filter(Boolean);
+
+  if (details.length === 0) {
+    return null;
+  }
+
+  return <p className="mb-2 text-sm text-slate-600">{details.join(", ")}</p>;
+}
+
 function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
   return (
     <li className="rounded-lg bg-white p-4">
@@ -153,6 +178,7 @@ function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
       </div>
       <h4 className="mb-1 text-lg font-semibold text-slate-900">{item.title[lang]}</h4>
       <p className="mb-2 text-sm text-slate-600">{item.authors}</p>
+      <PublicationMetadata item={item} lang={lang} />
       {item.links && (
         <div className="flex flex-wrap gap-2">
           {item.links.map((link) => (
@@ -239,9 +265,9 @@ export default function Home() {
   const sectionTitle = (id: keyof typeof sectionLabels) => sectionLabels[id][lang];
   const pageTitle = data
     ? lang === "ja"
-      ? `植田雄士のホームページ | ${data.profile.name[lang]}`
+      ? "植田雄士"
       : `Yuji Ueda's Page | ${data.profile.name[lang]}`
-    : "Yuji Ueda's Page";
+    : "植田雄士";
 
   if (!data) {
     return (
