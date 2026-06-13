@@ -93,15 +93,14 @@ const categoryLabels: Record<Publication["category"], Localized> = {
 };
 
 const sectionLabels: Record<string, Localized> = {
-  about: { ja: "About", en: "About" },
-  education: { ja: "学歴", en: "Education" },
+  education: { ja: "経歴", en: "Education" },
   publications: { ja: "研究業績", en: "Publications" },
   others: { ja: "その他", en: "Others" },
 };
 
 function SectionTitle({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <h2 id={id} className="mb-6 text-2xl font-bold text-slate-900 sm:mb-8 sm:text-3xl">
+    <h2 id={id} className="mb-2 text-2xl font-bold text-slate-900 sm:mb-3 sm:text-3xl">
       {children}
     </h2>
   );
@@ -170,14 +169,14 @@ function PublicationMetadata({ item, lang }: { item: Publication; lang: Lang }) 
 
 function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
   return (
-    <li className="rounded-lg bg-white p-4">
+    <li className="min-w-0 rounded-lg bg-white p-4">
       <div className="mb-2 flex flex-wrap items-center gap-2 text-sm text-slate-600">
         <span>• {item.venue[lang]}</span>
         <span>({item.year})</span>
         {item.peerReviewed && <PeerReviewBadge lang={lang} />}
       </div>
-      <h4 className="mb-1 text-lg font-semibold text-slate-900">{item.title[lang]}</h4>
-      <p className="mb-2 text-sm text-slate-600">{item.authors}</p>
+      <h4 className="mb-1 break-words text-lg font-semibold text-slate-900">{item.title[lang]}</h4>
+      <p className="mb-2 break-words text-sm text-slate-600">{item.authors}</p>
       <PublicationMetadata item={item} lang={lang} />
       {item.links && (
         <div className="flex flex-wrap gap-2">
@@ -256,7 +255,6 @@ export default function Home() {
   }, [data]);
 
   const navItems = [
-    { id: "about", label: sectionLabels.about[lang] },
     { id: "education", label: sectionLabels.education[lang] },
     { id: "publications", label: sectionLabels.publications[lang] },
     { id: "others", label: sectionLabels.others[lang] },
@@ -327,19 +325,16 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="relative overflow-hidden bg-white pb-2 pt-2 sm:pb-10 sm:pt-10 lg:pb-6 lg:pt-6">
+        <section className="relative overflow-hidden bg-white pb-0 pt-2 sm:pb-3 sm:pt-10 lg:pb-2 lg:pt-6">
           <div className="container mx-auto px-4 sm:px-6">
             <div className="grid items-center gap-8 sm:gap-10 lg:gap-8 lg:grid-cols-2">
-              <div>
+              <div className="min-w-0">
                 <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-blue-600">
                   {lang === "ja" ? "Introduction" : "Introduction"}
                 </p>
                 <h1 className="mb-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
                   {profile.name[lang]}
                 </h1>
-                <p className="mb-2 text-lg font-medium text-slate-700 sm:text-xl lg:whitespace-nowrap lg:text-lg xl:text-xl">
-                  {profile.title[lang]}
-                </p>
                 <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
                   {profile.bio[lang]}
                 </p>
@@ -358,7 +353,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="space-y-6 rounded-lg bg-white p-5 sm:p-8">
+              <div className="min-w-0 space-y-4 rounded-lg bg-white p-5 sm:p-8">
                 <div>
                   <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
                     {lang === "ja" ? "研究分野" : "Research Areas"}
@@ -383,7 +378,7 @@ export default function Home() {
                   </h3>
                   <a
                     href={`mailto:${profile.email}`}
-                    className="text-base font-medium text-blue-600 hover:underline sm:text-lg"
+                    className="break-all text-base font-medium text-blue-600 hover:underline sm:text-lg"
                   >
                     {profile.email}
                   </a>
@@ -408,32 +403,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="bg-white pb-6 pt-2 sm:pb-8 sm:pt-8 lg:pb-8 lg:pt-6">
-          <div className="container mx-auto px-4 sm:px-6">
-            <SectionTitle id="about-title">{sectionTitle("about")}</SectionTitle>
-            <div className="space-y-4 text-base leading-relaxed text-slate-700 sm:text-lg">
-              <p className="font-medium">{profile.title[lang]}</p>
-              <p>{profile.bio[lang]}</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="education" className="bg-white py-6 sm:py-8 lg:py-8">
+        <section id="education" className="bg-white pb-4 pt-1 sm:pb-5 sm:pt-2 lg:pb-5 lg:pt-2">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="education-title">{sectionTitle("education")}</SectionTitle>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-2">
               {education.map((item) => (
-                <li key={item.id} className="rounded-lg bg-white p-2 sm:p-3">
+                <li key={item.id} className="min-w-0 rounded-lg bg-white p-0 sm:p-1">
                   <div className="mb-1 text-sm font-semibold text-slate-500">
                     {item.startYear} — {item.endYear}
                   </div>
-                  <h3 className="mb-1 text-lg font-bold text-slate-900 sm:text-xl">
+                  <h3 className="mb-1 break-words text-lg font-bold text-slate-900 sm:text-xl">
                     {item.degree[lang]}
                   </h3>
-                  <p className="mb-1 text-base text-slate-700 sm:text-lg">
+                  <p className="mb-1 break-words text-base text-slate-700 sm:text-lg">
                     {item.institution[lang]}
                   </p>
-                  <p className="mb-1 text-slate-600">{item.department[lang]}</p>
+                  <p className="mb-1 break-words text-slate-600">{item.department[lang]}</p>
                   <p className="text-sm italic text-slate-500">{item.note[lang]}</p>
                 </li>
               ))}
@@ -441,21 +426,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="publications" className="bg-white py-6 sm:py-8 lg:py-8">
+        <section id="publications" className="bg-white pb-4 pt-2 sm:pb-5 sm:pt-3 lg:pb-5 lg:pt-3">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="publications-title">{sectionTitle("publications")}</SectionTitle>
-            <div className="space-y-12">
+            <div className="space-y-5">
               {(Object.keys(publicationsByCategory) as Publication["category"][]).map((category) => (
                 <div key={category}>
-                  <h3 className="mb-4 text-xl font-bold text-slate-800 sm:text-2xl">
+                  <h3 className="mb-2 text-xl font-bold text-slate-800 sm:text-2xl">
                     {categoryLabels[category][lang]}
                   </h3>
-                  <ul className="space-y-4">
+                  <ul className="space-y-1">
                     {publicationsByCategory[category].map((item) => (
                       <PublicationItem key={item.id} item={item} lang={lang} />
                     ))}
                     {publicationsByCategory[category].length === 0 && (
-                      <li className="rounded-lg bg-white p-4 text-center text-slate-500">
+                      <li className="rounded-lg bg-white p-3 text-center text-slate-500">
                         {lang === "ja" ? "準備中" : "Coming soon"}
                       </li>
                     )}
@@ -466,20 +451,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="others" className="bg-white py-6 sm:py-8 lg:py-8">
+        <section id="others" className="bg-white pb-4 pt-2 sm:pb-5 sm:pt-3 lg:pb-5 lg:pt-3">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="others-title">{sectionTitle("others")}</SectionTitle>
 
-            <ul className="space-y-6">
+            <ul className="space-y-3">
               {others.map((item) => (
-                <li key={item.id} className="rounded-lg bg-white p-4 sm:p-6">
+                <li key={item.id} className="min-w-0 rounded-lg bg-white p-2 sm:p-3">
                   <div className="mb-1 flex flex-wrap items-center gap-3">
                     {item.tag && (
                       <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
                         {item.tag[lang]}
                       </span>
                     )}
-                    <h4 className="text-lg font-semibold text-slate-900 sm:text-xl">
+                    <h4 className="break-words text-lg font-semibold text-slate-900 sm:text-xl">
                       {item.title[lang]}
                     </h4>
                   </div>
@@ -489,7 +474,7 @@ export default function Home() {
                     {item.date && <span>{item.date}</span>}
                     {item.amount && <span className="font-semibold text-blue-700">{item.amount}</span>}
                   </div>
-                  <p className="mb-3 text-slate-700">{item.description[lang]}</p>
+                  <p className="mb-3 break-words text-slate-700">{item.description[lang]}</p>
                   {item.links && (
                     <div className="flex flex-wrap gap-2">
                       {item.links.map((link) => (
