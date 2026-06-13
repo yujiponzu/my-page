@@ -406,7 +406,7 @@ export default function Home() {
         <section id="education" className="bg-white pb-4 pt-1 sm:pb-5 sm:pt-2 lg:pb-5 lg:pt-2">
           <div className="container mx-auto px-4 sm:px-6">
             <SectionTitle id="education-title">{sectionTitle("education")}</SectionTitle>
-            <ul className="space-y-0">
+            <ul className="space-y-2">
               {education.map((item) => (
                 <li key={item.id} className="min-w-0 rounded-lg bg-white p-0 sm:p-1">
                   <div className="mb-1 text-sm font-semibold text-slate-500">
