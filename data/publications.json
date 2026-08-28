@@ -131,5 +131,43 @@
       "ja": "浜松",
       "en": "Hamamatsu"
     }
+  },
+    {
+    "id": "paper-006",
+    "category": "domestic_conference",
+    "title": {
+      "ja": "多言語LLMの政治的回答分布は国別意見分布と一致するかーCSESを用いた比較分析ー",
+      "en": "Do Political Response Distributions of Multilingual LLMs Reflect Country-Level Public Opinion? A Comparative Analysis Using the CSES"
+    },
+    "authors": "植田雄士, 上田健太郎, 鳥海不二夫, 荒川豊, 安本慶一, 諏訪博彦",
+    "venue": {
+      "ja": "第21回言語処理若手シンポジウム(YANS2026)",
+      "en": "YANS2026"
+    },
+    "year": 2026,
+    "peerReviewed": false,
+    "location": {
+      "ja": "仙台",
+      "en": "Sendai"
+    }
+  },
+    {
+    "id": "paper-007",
+    "category": "domestic_conference",
+    "title": {
+      "ja": "スマートフォンアプリのプライバシーポリシー理解に向けた観点別スコアと理由・根拠提示の検討",
+      "en": "Exploring Aspect-Based Scores and the Presentation of Reasons and Evidence for Understanding Smartphone App Privacy Policies"
+    },
+    "authors": "植田雄士, 石丸翔也, 諏訪博彦",
+    "venue": {
+      "ja": "第177回情報システムと社会環境研究発表会",
+      "en": "177th IPSJ-SIG-IS"
+    },
+    "year": 2026,
+    "peerReviewed": false,
+    "location": {
+      "ja": "札幌",
+      "en": "Sapporo"
+    }
   }
 ]
