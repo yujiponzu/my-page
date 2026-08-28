@@ -84,7 +84,7 @@ const initialData: DataState = {
 
 
 const categoryLabels: Record<Publication["category"], Localized> = {
-  journal: { ja: "ジャーナル", en: "Journals" },
+  journal: { ja: "論文誌", en: "Journals" },
   international_conference: {
     ja: "国際会議",
     en: "International Conferences",
