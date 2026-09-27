@@ -12,6 +12,7 @@
       "en": "HCI International(HCII)'25"
     },
     "year": 2025,
+    "month": 6,
     "peerReviewed": true,
     "volume": "2529",
     "pages": "424-435",
@@ -42,6 +43,7 @@
       "en": "IPSJ collaboration and Network Service Workshop 2024 (CN Workshop ’24)"
     },
     "year": 2024,
+    "month": 11,
     "peerReviewed": true,
     "links": [
       {
@@ -70,6 +72,7 @@
       "en": "SIG-Computational Scale Science"
     },
     "year": 2025,
+    "month": 12,
     "peerReviewed": false,
     "pages": "22-28",
     "location": {
@@ -126,6 +129,7 @@
       "en": "Society for Computational Social Science of Japan"
     },
     "year": 2026,
+    "month": 3,
     "peerReviewed": false,
     "location": {
       "ja": "浜松",
@@ -145,6 +149,7 @@
       "en": "YANS2026"
     },
     "year": 2026,
+    "month": 8,
     "peerReviewed": false,
     "location": {
       "ja": "仙台",
@@ -164,10 +169,69 @@
       "en": "177th IPSJ-SIG-IS"
     },
     "year": 2026,
+    "month": 8,
     "peerReviewed": false,
     "location": {
       "ja": "札幌",
       "en": "Sapporo"
     }
+  },
+  {
+    "id": "paper-008",
+    "category": "domestic_conference",
+    "title": {
+      "ja": "Task Arithmeticによる大規模言語モデルの政治スタンスの操作",
+      "en": "Manipulating Political Stance of Large Language Models via Task Arithmetic"
+    },
+    "authors": "植田雄士, 上田健太郎, 鳥海不二夫, 荒川豊, 安本慶一, 諏訪博彦",
+    "venue": {
+      "ja": "2026年度 情報処理学会関西支部 支部大会",
+      "en": "IPSJ Kansai-Branch Convention 2026"
+    },
+    "year": 2026,
+    "month": 9,
+    "peerReviewed": false,
+    "location": {
+      "ja": "オンライン",
+      "en": "Online"
+    },
+    "links": [
+      {
+        "label": {
+          "ja": "リンク",
+          "en": "Link"
+        },
+        "url": "https://kansai.ipsj.or.jp/guide/pages/proceedings/kaisai_2026/sessions/session-g03.html"
+      }
+    ]
+  },
+  {
+    "id": "paper-009",
+    "category": "domestic_conference",
+    "title": {
+      "ja": "プライバシーポリシーを適切に評価できるかー人間とLLMの評価性能の比較ー",
+      "en": "Can Privacy Policies Be Evaluated Appropriately? A Comparison of Evaluation Performance between Humans and LLMs"
+    },
+    "authors": "植田雄士, 諏訪博彦",
+    "venue": {
+      "ja": "第120回モバイルコンピューティングと新社会システム研究発表会",
+      "en": "120th IPSJ-SIG-MBL"
+    },
+    "year": 2026,
+    "month": 9,
+    "peerReviewed": false,
+    "location": {
+      "ja": "浜松",
+      "en": "Hamamatsu"
+    },
+    "links": [
+      {
+        "label": {
+          "ja": "リンク",
+          "en": "Link"
+        },
+        "url": "https://mbl.ipsj.or.jp/program/2026/120/"
+      }
+    ]
   }
 ]

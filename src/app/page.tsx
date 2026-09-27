@@ -33,6 +33,7 @@ type Publication = {
   authors: string;
   venue: Localized;
   year: number;
+  month?: number;
   peerReviewed: boolean;
   volume?: string;
   number?: string;
@@ -167,12 +168,23 @@ function PublicationMetadata({ item, lang }: { item: Publication; lang: Lang }) 
   return <p className="mb-2 text-sm text-slate-600">{details.join(", ")}</p>;
 }
 
+function formatPublicationDate(item: Publication, lang: Lang) {
+  if (!item.month) {
+    return String(item.year);
+  }
+  if (lang === "ja") {
+    return `${item.year}年${item.month}月`;
+  }
+  const monthName = new Date(item.year, item.month - 1).toLocaleString("en-US", { month: "short" });
+  return `${monthName} ${item.year}`;
+}
+
 function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
   return (
     <li className="min-w-0 rounded-lg bg-white p-4">
       <div className="mb-2 flex flex-wrap items-center gap-2 text-sm text-slate-600">
         <span>• {item.venue[lang]}</span>
-        <span>({item.year})</span>
+        <span>({formatPublicationDate(item, lang)})</span>
         {item.peerReviewed && <PeerReviewBadge lang={lang} />}
       </div>
       <h4 className="mb-1 break-words text-lg font-semibold text-slate-900">{item.title[lang]}</h4>
@@ -245,7 +257,10 @@ export default function Home() {
     if (!data) {
       return { journal: [], international_conference: [], domestic_conference: [] };
     }
-    return data.publications.reduce<Record<Publication["category"], Publication[]>>(
+    const sorted = [...data.publications].sort(
+      (a, b) => b.year - a.year || (b.month ?? 0) - (a.month ?? 0),
+    );
+    return sorted.reduce<Record<Publication["category"], Publication[]>>(
       (acc, item) => {
         acc[item.category] = [...(acc[item.category] ?? []), item];
         return acc;
