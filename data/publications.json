@@ -6,6 +6,7 @@
       "ja": "Bias Mitigation and Shifting Ideologies of LLM by Prompting",
       "en": "Bias Mitigation and Shifting Ideologies of LLM by Prompting"
     },
+    "url": "https://doi.org/10.1007/978-3-031-94171-9_41",
     "authors": "Yuji Ueda and Hirohiko Suwa",
     "venue": {
       "ja": "HCI International(HCII)'25",
@@ -19,16 +20,7 @@
     "location": {
       "ja": "スウェーデン・ヨーテボリ",
       "en": "Gothenburg, Sweden"
-    },
-    "links": [
-      {
-        "label": {
-          "ja": "DOI",
-          "en": "DOI"
-        },
-        "url": "https://doi.org/10.1007/978-3-031-94171-9_41"
-      }
-    ]
+    }
   },
   {
     "id": "paper-002",
@@ -37,6 +29,7 @@
       "ja": "政治イデオロギーを持つLLMエージェントの生成",
       "en": "The generation of LLM agents with political ideologies"
     },
+    "url": "https://ipsj.ixsq.nii.ac.jp/records/240630",
     "authors": "植田 雄士, 諏訪 博彦",
     "venue": {
       "ja": "情報処理学会 コラボレーションとネットワークサービスワークショップ2024 (CN Workshop ’24)",
@@ -45,15 +38,6 @@
     "year": 2024,
     "month": 11,
     "peerReviewed": true,
-    "links": [
-      {
-        "label": {
-          "ja": "リンク",
-          "en": "Link"
-        },
-        "url": "https://ipsj.ixsq.nii.ac.jp/records/240630"
-      }
-    ],
     "location": {
       "ja": "加賀",
       "en": "Kaga"
@@ -66,6 +50,7 @@
       "ja": "2次元の政治スタンス入力に基づくLLMの操作性に関する調査",
       "en": "A Study on the Steerability of Large Language Models Based on Two-Dimensional Political Orientation Inputs"
     },
+    "url": "https://doi.org/10.11517/jsaisigtwo.2025.CSS-001_22",
     "authors": "植田 雄士, 上田 健太郎, 諏訪 博彦, 鳥海 不二夫, 荒川豊, 安本慶一",
     "venue": {
       "ja": "人工知能学会 創律計算科学研究会",
@@ -78,16 +63,7 @@
     "location": {
       "ja": "横浜",
       "en": "Yokohama"
-    },
-    "links": [
-      {
-        "label": {
-          "ja": "DOI",
-          "en": "DOI"
-        },
-        "url": "https://doi.org/10.11517/jsaisigtwo.2025.CSS-001_22"
-      }
-    ]
+    }
   },
   {
     "id": "paper-004",
@@ -96,6 +72,7 @@
       "ja": "文脈内学習による政治イデオロギーを持つLLMエージェントの生成",
       "en": "Generation of LLM Agents with Political Ideologies through In-Context Learning"
     },
+    "url": "https://ipsj.ixsq.nii.ac.jp/records/2009092",
     "authors": "植田 雄士, 諏訪 博彦",
     "venue": {
       "ja": "情報処理学会論文誌",
@@ -105,16 +82,7 @@
     "peerReviewed": true,
     "volume": "67",
     "number": "4",
-    "pages": "895-904",
-    "links": [
-      {
-        "label": {
-          "ja": "リンク",
-          "en": "Link"
-        },
-        "url": "https://www.ipsj.or.jp/journal/info/accept/january.html"
-      }
-    ]
+    "pages": "895-904"
   },
   {
     "id": "paper-005",
@@ -136,7 +104,7 @@
       "en": "Hamamatsu"
     }
   },
-    {
+  {
     "id": "paper-006",
     "category": "domestic_conference",
     "title": {
@@ -156,13 +124,14 @@
       "en": "Sendai"
     }
   },
-    {
+  {
     "id": "paper-007",
     "category": "domestic_conference",
     "title": {
       "ja": "スマートフォンアプリのプライバシーポリシー理解に向けた観点別スコアと理由・根拠提示の検討",
       "en": "Exploring Aspect-Based Scores and the Presentation of Reasons and Evidence for Understanding Smartphone App Privacy Policies"
     },
+    "url": "https://ipsj.ixsq.nii.ac.jp/records/2010950",
     "authors": "植田雄士, 石丸翔也, 諏訪博彦",
     "venue": {
       "ja": "第177回情報システムと社会環境研究発表会",
@@ -194,16 +163,7 @@
     "location": {
       "ja": "オンライン",
       "en": "Online"
-    },
-    "links": [
-      {
-        "label": {
-          "ja": "リンク",
-          "en": "Link"
-        },
-        "url": "https://kansai.ipsj.or.jp/guide/pages/proceedings/kaisai_2026/sessions/session-g03.html"
-      }
-    ]
+    }
   },
   {
     "id": "paper-009",
@@ -212,6 +172,7 @@
       "ja": "プライバシーポリシーを適切に評価できるかー人間とLLMの評価性能の比較ー",
       "en": "Can Privacy Policies Be Evaluated Appropriately? A Comparison of Evaluation Performance between Humans and LLMs"
     },
+    "url": "https://ipsj.ixsq.nii.ac.jp/records/2012138",
     "authors": "植田雄士, 諏訪博彦",
     "venue": {
       "ja": "第120回モバイルコンピューティングと新社会システム研究発表会",
@@ -223,15 +184,6 @@
     "location": {
       "ja": "浜松",
       "en": "Hamamatsu"
-    },
-    "links": [
-      {
-        "label": {
-          "ja": "リンク",
-          "en": "Link"
-        },
-        "url": "https://mbl.ipsj.or.jp/program/2026/120/"
-      }
-    ]
+    }
   }
 ]

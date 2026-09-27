@@ -39,7 +39,7 @@ type Publication = {
   number?: string;
   pages?: string;
   location?: Localized;
-  links?: { label: Localized; url: string }[];
+  url?: string;
 };
 
 type EducationItem = {
@@ -187,24 +187,22 @@ function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
         <span>({formatPublicationDate(item, lang)})</span>
         {item.peerReviewed && <PeerReviewBadge lang={lang} />}
       </div>
-      <h4 className="mb-1 break-words text-lg font-semibold text-slate-900">{item.title[lang]}</h4>
+      <h4 className="mb-1 break-words text-lg font-semibold text-slate-900">
+        {item.url ? (
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-700 hover:underline"
+          >
+            {item.title[lang]}
+          </a>
+        ) : (
+          item.title[lang]
+        )}
+      </h4>
       <p className="mb-2 break-words text-sm text-slate-600">{item.authors}</p>
       <PublicationMetadata item={item} lang={lang} />
-      {item.links && (
-        <div className="flex flex-wrap gap-2">
-          {item.links.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-blue-600 hover:underline"
-            >
-              {link.label[lang]} ↗
-            </a>
-          ))}
-        </div>
-      )}
     </li>
   );
 }
