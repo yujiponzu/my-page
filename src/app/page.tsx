@@ -193,7 +193,7 @@ function PublicationItem({ item, lang }: { item: Publication; lang: Lang }) {
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-700 hover:underline"
+            className="hover:underline"
           >
             {item.title[lang]}
           </a>
