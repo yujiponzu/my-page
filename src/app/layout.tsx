@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "植田雄士",
   description:
-    "植田雄士（Yuji Ueda）の研究ホームページ。大規模言語モデル（LLM）、エコーチェンバー、フィルターバブル、情報的健康に関する研究・業績を掲載。",
+    "植田雄士（Yuji Ueda）の研究ホームページ。研究・業績を掲載。",
   robots: {
     index: true,
     follow: true,

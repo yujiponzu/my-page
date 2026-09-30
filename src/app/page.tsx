@@ -16,10 +16,8 @@ type Profile = {
   name: Localized;
   title: Localized;
   researchAreas: LocalizedList;
-  keywords: LocalizedList | string[];
   bio: Localized;
   email: string;
-  location: Localized | string;
   social: {
     twitter: string;
     facebook: string;
@@ -358,77 +356,52 @@ export default function Home() {
       <main>
         <section className="relative overflow-hidden bg-white pb-0 pt-2 sm:pb-3 sm:pt-10 lg:pb-2 lg:pt-6">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid items-center gap-8 sm:gap-10 lg:gap-8 lg:grid-cols-2">
-              <div className="min-w-0">
-                <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-blue-600">
-                  {lang === "ja" ? "Introduction" : "Introduction"}
-                </p>
-                <h1 className="mb-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
-                  {profile.name[lang]}
-                </h1>
-                <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
-                  {profile.bio[lang]}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {(Array.isArray(profile.keywords)
-                    ? profile.keywords
-                    : profile.keywords[lang]
-                  ).map((keyword) => (
-                    <span
-                      key={keyword}
-                      className="text-sm font-medium text-slate-700"
-                    >
-                      {keyword}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <div className="min-w-0">
+              <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-blue-600">
+                {lang === "ja" ? "Introduction" : "Introduction"}
+              </p>
+              <h1 className="mb-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                {profile.name[lang]}
+              </h1>
+              <p className="text-base leading-relaxed text-slate-700 sm:text-lg">
+                {profile.bio[lang]}
+              </p>
+            </div>
 
-              <div className="min-w-0 space-y-4 rounded-lg bg-white p-5 sm:p-8">
-                <div>
-                  <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
-                    {lang === "ja" ? "研究分野" : "Research Areas"}
-                  </h3>
-                  <p className="text-base text-slate-700 sm:text-lg">
-                    {profile.researchAreas[lang].join(" / ")}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
-                    {lang === "ja" ? "拠点" : "Location"}
-                  </h3>
-                  <p className="text-base text-slate-700 sm:text-lg">
-                    {typeof profile.location === "string"
-                      ? profile.location
-                      : profile.location[lang]}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-slate-500">
-                    {lang === "ja" ? "メール" : "Email"}
-                  </h3>
+            <div className="mt-6 flex flex-wrap items-end gap-x-10 gap-y-4">
+              <div className="min-w-0">
+                <h3 className="mb-1 text-sm font-semibold uppercase tracking-wide text-slate-500">
+                  {lang === "ja" ? "研究分野" : "Research Areas"}
+                </h3>
+                <p className="text-base text-slate-700 sm:text-lg">
+                  {profile.researchAreas[lang].join(" / ")}
+                </p>
+              </div>
+              <div className="min-w-0">
+                <h3 className="mb-1 text-sm font-semibold uppercase tracking-wide text-slate-500">
+                  {lang === "ja" ? "メール" : "Email"}
+                </h3>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="break-all text-base font-medium text-blue-600 hover:underline sm:text-lg"
+                >
+                  {profile.email}
+                </a>
+              </div>
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
                   <a
-                    href={`mailto:${profile.email}`}
-                    className="break-all text-base font-medium text-blue-600 hover:underline sm:text-lg"
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-600 transition hover:text-blue-600"
+                    aria-label={social.label}
                   >
-                    {profile.email}
+                    <SocialIcon name={social.name} />
+                    <span className="sr-only">{social.label}</span>
                   </a>
-                </div>
-                <div className="flex gap-4 pt-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-600 transition hover:text-blue-600"
-                      aria-label={social.label}
-                    >
-                      <SocialIcon name={social.name} />
-                      <span className="sr-only">{social.label}</span>
-                    </a>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
           </div>

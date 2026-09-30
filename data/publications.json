@@ -39,8 +39,8 @@
     "month": 11,
     "peerReviewed": true,
     "location": {
-      "ja": "加賀",
-      "en": "Kaga"
+      "ja": "石川",
+      "en": "Ishikawa"
     }
   },
   {
@@ -61,8 +61,8 @@
     "peerReviewed": false,
     "pages": "22-28",
     "location": {
-      "ja": "横浜",
-      "en": "Yokohama"
+      "ja": "神奈川",
+      "en": "Kanagawa"
     }
   },
   {
@@ -100,8 +100,8 @@
     "month": 3,
     "peerReviewed": false,
     "location": {
-      "ja": "浜松",
-      "en": "Hamamatsu"
+      "ja": "静岡",
+      "en": "Shizuoka"
     }
   },
   {
@@ -120,8 +120,8 @@
     "month": 8,
     "peerReviewed": false,
     "location": {
-      "ja": "仙台",
-      "en": "Sendai"
+      "ja": "宮城",
+      "en": "Miyagi"
     }
   },
   {
@@ -141,8 +141,8 @@
     "month": 8,
     "peerReviewed": false,
     "location": {
-      "ja": "札幌",
-      "en": "Sapporo"
+      "ja": "北海道",
+      "en": "Hokkaido"
     }
   },
   {
@@ -182,8 +182,8 @@
     "month": 9,
     "peerReviewed": false,
     "location": {
-      "ja": "浜松",
-      "en": "Hamamatsu"
+      "ja": "静岡",
+      "en": "Shizuoka"
     }
   }
 ]
