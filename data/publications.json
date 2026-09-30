@@ -150,7 +150,7 @@
     "category": "domestic_conference",
     "title": {
       "ja": "Task Arithmeticによる大規模言語モデルの政治スタンスの操作",
-      "en": "Manipulating Political Stance of Large Language Models via Task Arithmetic"
+      "en": "Steering the Political Stance of Large Language Models via Task Arithmetic"
     },
     "authors": "植田雄士, 上田健太郎, 鳥海不二夫, 荒川豊, 安本慶一, 諏訪博彦",
     "venue": {
@@ -161,8 +161,8 @@
     "month": 9,
     "peerReviewed": false,
     "location": {
-      "ja": "オンライン",
-      "en": "Online"
+      "ja": "大阪",
+      "en": "Osaka"
     }
   },
   {

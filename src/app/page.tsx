@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Yuji_Boku } from "next/font/google";
 import educationJson from "../../data/education.json";
+import awardsJson from "../../data/awards.json";
 import othersJson from "../../data/others.json";
 import profileJson from "../../data/profile.json";
 import publicationsJson from "../../data/publications.json";
@@ -52,6 +53,18 @@ type EducationItem = {
   note: Localized;
 };
 
+type AwardItem = {
+  id: string;
+  title: Localized;
+  organization: Localized;
+  event: Localized;
+  work: Localized;
+  authors: string;
+  year: number;
+  month?: number;
+  url?: string;
+};
+
 type OtherItem = {
   id: string;
   title: Localized;
@@ -73,6 +86,7 @@ type DataState = {
   profile: Profile;
   education: EducationItem[];
   publications: Publication[];
+  awards: AwardItem[];
   others: OtherItem[];
 };
 
@@ -80,6 +94,7 @@ const initialData: DataState = {
   profile: profileJson as Profile,
   education: educationJson as EducationItem[],
   publications: publicationsJson as Publication[],
+  awards: awardsJson as AwardItem[],
   others: othersJson as OtherItem[],
 };
 
@@ -96,6 +111,7 @@ const categoryLabels: Record<Publication["category"], Localized> = {
 const sectionLabels: Record<string, Localized> = {
   education: { ja: "経歴", en: "Education" },
   publications: { ja: "研究業績", en: "Publications" },
+  awards: { ja: "受賞", en: "Awards" },
   others: { ja: "その他", en: "Others" },
 };
 
@@ -168,7 +184,7 @@ function PublicationMetadata({ item, lang }: { item: Publication; lang: Lang }) 
   return <p className="mb-2 text-sm text-slate-600">{details.join(", ")}</p>;
 }
 
-function formatPublicationDate(item: Publication, lang: Lang) {
+function formatPublicationDate(item: { year: number; month?: number }, lang: Lang) {
   if (!item.month) {
     return String(item.year);
   }
@@ -230,14 +246,15 @@ export default function Home() {
 
     const loadData = async () => {
       try {
-        const [profile, education, publications, others] = await Promise.all([
+        const [profile, education, publications, awards, others] = await Promise.all([
           fetchJson<Profile>("/api/data/profile"),
           fetchJson<EducationItem[]>("/api/data/education"),
           fetchJson<Publication[]>("/api/data/publications"),
+          fetchJson<AwardItem[]>("/api/data/awards"),
           fetchJson<OtherItem[]>("/api/data/others"),
         ]);
         if (isCancelled) return;
-        setData({ profile, education, publications, others });
+        setData({ profile, education, publications, awards, others });
       } catch (err) {
         console.error(err);
         setError("データの取得に失敗しました。");
@@ -270,6 +287,7 @@ export default function Home() {
   const navItems = [
     { id: "education", label: sectionLabels.education[lang] },
     { id: "publications", label: sectionLabels.publications[lang] },
+    { id: "awards", label: sectionLabels.awards[lang] },
     { id: "others", label: sectionLabels.others[lang] },
   ];
 
@@ -291,7 +309,7 @@ export default function Home() {
     );
   }
 
-  const { profile, education, others } = data;
+  const { profile, education, awards, others } = data;
 
   const socialLinks = [
     { name: "github" as const, label: "GitHub", url: profile.social.github },
@@ -461,6 +479,42 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="awards" className="bg-white pb-4 pt-2 sm:pb-5 sm:pt-3 lg:pb-5 lg:pt-3">
+          <div className="container mx-auto px-4 sm:px-6">
+            <SectionTitle id="awards-title">{sectionTitle("awards")}</SectionTitle>
+            <ul className="space-y-1">
+              {[...awards]
+                .sort((a, b) => b.year - a.year || (b.month ?? 0) - (a.month ?? 0))
+                .map((item) => (
+                  <li key={item.id} className="min-w-0 rounded-lg bg-white p-4">
+                    <div className="mb-2 flex flex-wrap items-center gap-2 text-sm text-slate-600">
+                      <span>• {item.event[lang]}</span>
+                      <span>({formatPublicationDate(item, lang)})</span>
+                    </div>
+                    <h4 className="mb-1 break-words text-lg font-semibold text-slate-900">
+                      {item.organization[lang]} {item.title[lang]}
+                    </h4>
+                    <p className="mb-1 break-words text-slate-700">
+                      {item.url ? (
+                        <a
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
+                          {item.work[lang]}
+                        </a>
+                      ) : (
+                        item.work[lang]
+                      )}
+                    </p>
+                    <p className="break-words text-sm text-slate-600">{item.authors}</p>
+                  </li>
+                ))}
+            </ul>
           </div>
         </section>
 

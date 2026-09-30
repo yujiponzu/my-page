@@ -1,0 +1,25 @@
+[
+  {
+    "id": "award-001",
+    "title": {
+      "ja": "支部大会奨励賞",
+      "en": "Encouragement Award"
+    },
+    "organization": {
+      "ja": "情報処理学会 関西支部",
+      "en": "IPSJ Kansai Chapter"
+    },
+    "event": {
+      "ja": "第25回 情報処理学会関西支部 支部大会",
+      "en": "The 25th IPSJ Kansai Chapter Convention"
+    },
+    "work": {
+      "ja": "Task Arithmeticによる大規模言語モデルの政治スタンスの操作",
+      "en": "Steering the Political Stance of Large Language Models via Task Arithmetic"
+    },
+    "authors": "植田 雄士, 上田 健太郎, 鳥海 不二夫, 荒川 豊, 安本 慶一, 諏訪 博彦",
+    "year": 2026,
+    "month": 9,
+    "url": "https://kansai.ipsj.or.jp/guide/pages/proceedings/kaisai_2026/sessions/session-g03.html"
+  }
+]

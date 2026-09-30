@@ -5,6 +5,7 @@ const allowedFiles = new Set([
   "profile",
   "education",
   "publications",
+  "awards",
   "others",
   "contact",
 ]);
