@@ -185,5 +185,22 @@
       "ja": "静岡",
       "en": "Shizuoka"
     }
+  },
+  {
+    "id": "paper-010",
+    "category": "journal",
+    "title": {
+      "ja": "Evaluating the Steerability of Large Language Models Toward Two-Dimensional Political Stances via In-Context Learning",
+      "en": "Evaluating the Steerability of Large Language Models Toward Two-Dimensional Political Stances via In-Context Learning"
+    },
+    "url": "https://doi.org/10.1109/ojcs.2026.3735032",
+    "authors": "Yuji Ueda, Kentaro Ueda, Fujio Toriumi, Yutaka Arakawa, Keiichi Yasumoto and Hirohiko Suwa",
+    "venue": {
+      "ja": "IEEE Open Journal of the Computer Society",
+      "en": "IEEE Open Journal of the Computer Society"
+    },
+    "year": 2026,
+    "month": 9,
+    "peerReviewed": true
   }
 ]
